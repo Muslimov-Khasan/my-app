@@ -118,7 +118,7 @@
     margin-right: 12px;
   }
   
-  .banner-delete {
+  .contact-delete {
     width: 290px;
     height: auto;
     padding: 10px;
@@ -132,7 +132,7 @@
     text-align: center;
     cursor: pointer;
   }
-  .banner-delete:hover {
+  .contact-delete:hover {
     opacity: 0.8;
     transition: 0.4s;
   }

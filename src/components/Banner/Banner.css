@@ -140,12 +140,9 @@
 
 .banner-delete {
   width: 290px;
-  height: auto;
   padding: 10px;
   margin: 0 auto;
-  padding: 8px, 16px, 8px, 12px;
   border-radius: 12px;
-  background-color: transparent;
   border: none;
   background-color: #ffebeb;
   color: red;
