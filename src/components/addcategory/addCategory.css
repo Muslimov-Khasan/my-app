@@ -1,0 +1,223 @@
+.addcategoriya-btn {
+  width: 40px;
+  height: 40px;
+  padding: 13px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(37, 182, 121, 1);
+  transform: translateX(1030px);
+}
+
+/* Add this style to your CSS file or style tag */
+.modal-body form label {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  margin-left: 100px;
+  margin-bottom: 10px;
+}
+
+.modal-body form input[type="text"] {
+  border-radius: 4px;
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  margin-bottom: 10px;
+}
+.modal-body-editd form label {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  transform: translateX(50px);
+  margin-bottom: 10px;
+}
+
+.modal-body-editd form input[type="text"] {
+  border-radius: 4px;
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.shablon {
+  transform: translateX(-50px);
+}
+
+.save-btn {
+  display: block;
+  width: 200px;
+  height: auto;
+  padding: 12px, 16px;
+  border-radius: 7px;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  margin-bottom: 11px;
+  background-color: rgba(37, 182, 121, 1);
+}
+
+.newClass {
+  color: #25B679;
+  text-decoration: underline;
+}
+
+.key-word {
+  display: flex;
+}
+
+.po {
+  transform: translateX(20px);
+}
+
+.edit-img {
+  transform: translateX(150px);
+}
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.4s;
+  border-radius: 34px;
+}
+
+.categories-btn {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgba(37, 182, 121, 1);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgba(37, 182, 121, 1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-message {
+  transition: opacity 0.4s, transform 0.4s;
+  font-size: 16px;
+  font-family: FF Nort;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  display: none;
+}
+
+.toggle-wrapper {
+  display: flex;
+}
+
+input:checked + .slider + .toggle-message {
+  opacity: 1;
+}
+
+.add-btn {
+  width: 24px;
+  height: 24px; 
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(480px);
+}
+
+.category-close-btn {
+  width: 24px;
+  height: 24px; 
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(400px);
+}
+@media only screen and (max-width: 1025px) {
+  /* Your responsive styles here */
+
+  .addcategoriya-btn {
+    transform: translateX(660px);
+  }
+
+  .modal-body form label {
+    margin-left: 50px;
+  }
+
+  .modal-body-editd form label {
+    transform: translateX(0);
+  }
+
+  .shablon {
+    transform: translateX(0);
+  }
+
+  .save-btn {
+    width: 100%; /* Make the button full-width */
+  }
+
+  .newClass {
+    color: #25B679;
+    text-decoration: none; /* Remove underline on small screens */
+  }
+
+  .po {
+    transform: translateX(0);
+  }
+
+  .edit-img {
+    transform: translateX(0);
+  }
+
+  .add-btn,
+  .category-close-btn {
+    transform: translateX(0);
+  }
+}

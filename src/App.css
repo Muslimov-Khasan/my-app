@@ -1,38 +1,60 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.contianer {
+  max-width: 1140px;
+  padding: 20px 20px; 
+}
+
+.close-btn {
+  width: 24px;
+  height: 24px; 
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(300px);
+}
+
+.loading-text {
   text-align: center;
+  font-size: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper-link {
+  color: #000;
+  width: 132px;
+  height: 33px;
+  padding: 0px, 8px, 2px, 8px;
+  border: 0px, 0px, 1px, 0px;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 24px;
+  margin-left: 11px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn-file {
   display: flex;
   flex-direction: column;
+  width: auto;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 11px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-error {
+  color: red;
+  text-align: center;
 }

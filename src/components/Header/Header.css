@@ -1,0 +1,236 @@
+.header-title {
+  font-family: Nunito Sans;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  transform: translateX(100px);
+}
+
+.box {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.react-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-modal-content {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-btn {
+  width: 40px;
+  height: 40px;
+  padding: 13px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(37, 182, 121, 1);
+  margin-top: 20px;
+} 
+
+.modal-form {
+  width: 300px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.phoneNumber {
+  padding: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.input-name {
+  padding: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.select-role {
+  padding: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(37, 182, 121, 1);
+}
+
+.react-modal-content {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  outline: none;
+}
+
+.react-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: auto;
+  padding: 10px;
+  border-radius: 14px;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 1);
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+}
+
+.admin-delete {
+  display: flex;
+  width: 80px;
+  height: auto;
+  padding: 10px;
+  font-size: 16px; 
+  background-color: transparent;
+  border-radius: 30px;
+  border: none;
+}
+
+.admin-edit {
+  width: 80px;
+  height: auto;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+}
+
+table {
+  width:   1290px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  transform: translateX(40px);
+  cursor: pointer;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  color: black;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.three-dot {
+  width: auto;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-style: 300px;
+}
+
+.admin-btn {
+  width: 24px;
+  height: 24px; 
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(300px);
+}
+
+.editd-btn {
+  width: 24px;
+  height: 24px; 
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(300px);
+}
+@media only screen and (max-width: 768px) and (max-width: 1024px) {
+  .box {
+    width: 100%; /* Adjust width for better responsiveness */
+  }
+
+  .react-modal-content {
+    max-width: 80%; /* Adjust max-width for better responsiveness */
+  }
+
+  .buttons-container {
+    width: 100%; /* Adjust width for better responsiveness */
+  }
+
+  table {
+    width: 100%; /* Adjust width for better responsiveness */
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .modal-btn {
+    transform: translateX(108px);
+  }
+}

@@ -1,0 +1,55 @@
+.logo {
+  margin-bottom: 11px;
+  transform: translateX(70px);
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.buttons {
+  width: auto;
+  display: flex;
+  border-radius: 50px;
+  transform: translateX(200px);
+  background-color: #fafafa;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 50px;
+  padding: 21px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  font-style: normal;
+  font-size: medium;
+  margin-left: 10px;
+}
+
+.active {
+  padding: 11px 31px; /* Fix the syntax error here */
+  border-radius: 50px;
+  background-color: rgba(37, 182, 121, 1);
+  color: #fafafa;
+}
+@media only screen and (max-width: 1137px) {
+  .logo {
+    transform: translateX(10px);
+  }
+
+  .buttons {
+    transform: translateX(50px);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .logo {
+    transform: translateX(10px);
+  }
+
+  .buttons {
+    transform: translateX(50px);
+  }
+}

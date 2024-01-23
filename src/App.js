@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Login from "./page/Login/Login";
+import Category from "./components/category/category";
+import ImageUpload from "./components/Banner/Banner";
+import News from "./components/News/News";
+import Header from "./components/Header/Header";
+import AddCategory from "./components/addcategory/addcategory";
+import Monitoring from "./components/Monitoring/Monitoring";
+import FAQ from "./components/FAQ/FAQ";
+import Users from "./components/users/users";
+import Moderator from "./components/Moderator/Moderator";
+import Contact from "./components/Contact/Contact";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Monitoring" element={<Monitoring />} />
+        <Route path="/add-category" element={<AddCategory />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/adminAdd" element={<Header />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/Moderator" element={<Moderator />} />
+        <Route path="/image-upload" element={<ImageUpload />} />
+        <Route path="/Contact" element={<Contact/>} />
+      </Routes>
     </div>
   );
 }

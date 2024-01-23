@@ -1,0 +1,52 @@
+.navbar {
+  padding: 10px;
+}
+
+.mood {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.UzbekistanMaps {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.lang {
+  width: 143px;
+  height: 42px;
+  padding: 9px, 16px, 9px, 16px;
+  border-radius: 80px;
+  gap: 8px;
+  text-align: center;
+  background-color: #eaf8f2ff;
+  color: #25b679;
+  border: none;
+  font-family: Nunito Sans;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+}

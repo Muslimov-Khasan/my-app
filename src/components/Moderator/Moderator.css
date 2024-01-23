@@ -1,0 +1,476 @@
+.product-list {
+  border-radius: 32px;
+  transform: translateX(100px);
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.product-list::-webkit-scrollbar {
+  width: 12px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+  background-color: rgba(37, 182, 121, 1);
+  border-radius: 6px;
+}
+
+.product-list::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border-radius: 6px;
+}
+
+.all {
+  display: flex;
+}
+
+.product-item {
+  width: 100%;
+  height: 190px;
+  display: flex;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 16px;
+  border-radius: 27.36px;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.go {
+  margin-left: 11px;
+}
+
+.product-title {
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans';
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.wrapper-location {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.voydod {
+  display: flex;
+}
+
+.moderator-title {
+  font-family: 'Nunito Sans';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: -0.02em;
+  margin-left: 61px;
+}
+
+.product-text {
+  font-family: 'Nunito Sans';
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+}
+
+.location-word {
+  font-family: 'Nunito Sans';
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  color: rgba(107, 107, 107, 1);
+  transform: translateY(-14px);
+}
+
+.kg {
+  margin-left: 12px;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  font-weight: 700;
+  transform: translateY(-15px);
+  line-height: 26px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.price {
+  margin-left: 20px;
+  font-family: 'Nunito Sans';
+  font-size: 28px;
+  color: rgba(37, 182, 121, 1);
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  transform: translateY(-32px);
+}
+
+.container-fluid {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.product-list-checked {
+  border-radius: 32px;
+  padding: 0;
+  list-style: none;
+  overflow-y: scroll;
+  transform: translateX(60px);
+}
+
+.product-list-checked::-webkit-scrollbar {
+  width: 12px;
+}
+
+.product-list-checked::-webkit-scrollbar-thumb {
+  background-color: rgba(37, 182, 121, 1);
+  border-radius: 6px;
+}
+
+.product-list-checked::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border-radius: 6px;
+}
+
+.product-item-checked {
+  width: 644px;
+  height: 190px;
+  display: flex;
+  border: 1px solid #ddd;
+  margin-bottom: 11px;
+  padding: 16px;
+  border-radius: 27.36px;
+  gap: 16px;
+  cursor: pointer;
+  background-color: #25b67926;
+}
+
+.all {
+  display: flex;
+  width: 700px;
+}
+
+.go {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-left: 11px;
+}
+
+.wrapper-location {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.voydod {
+  display: flex;
+}
+
+.location-icon {
+  max-width: 100%;
+  height: auto;
+  transform: translateY(-36px);
+}
+
+.moderator-title {
+  font-family: 'Nunito Sans';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.product-text-checked {
+  font-family: 'Nunito Sans';
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.kg {
+  margin-left: 12px;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  font-weight: 700;
+  transform: translateY(-20px);
+  line-height: 26px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.price {
+  margin-left: 20px;
+  font-family: 'Nunito Sans';
+  font-size: 28px;
+  color: rgba(37, 182, 121, 1);
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  transform: translateY(-32px);
+}
+
+.form-product {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-product {
+  width: auto;
+  height: 38px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: solid 1px rgba(250, 250, 250, 1);
+  outline: none;
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.another-item {
+  display: flex;
+}
+
+.products-select {
+  width: 348px;
+  height: 42px;
+  padding: 12px 16px; /* Updated padding */
+  border-radius: 8px;
+  border: solid 1px rgba(250, 250, 250, 1);
+  outline: none;
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  transform: translateY(20px);
+}
+
+.form-lord {
+  align-items: center;
+  margin: 0 auto;
+}
+
+.photoUrl-img {
+  display: flex;
+  margin: 0 auto;
+}
+
+.label-img {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-price {
+  width: 400px;
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.province-select {
+  width: 100%;
+  height: 42px;
+  padding: 12px 16px; /* Updated padding */
+  border-radius: 8px;
+}
+
+.input-price {
+  width: 224px;
+  height: 38px;
+  padding: 12px 16px; /* Updated padding */
+  border-radius: 8px;
+  gap: 10px;
+  outline: none;
+  background-color: rgba(250, 250, 250, 1);
+  margin-left: 11px;
+}
+
+/* Style for the delete modal */
+.react-modal-content {
+  width: auto;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  padding: 40px 64px;
+  border-radius: 8px;
+  max-width: 600px;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+/* Style for the overlay */
+.react-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.manko {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Style for the form inside the modal */
+.form-comment {
+  width: 100%;
+  max-width: 500px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+.contact-price {
+  transform: translateX(80px);
+  text-align: center;
+}
+
+.contact-weight {
+  transform: translateX(100px);
+  text-align: center;
+}
+
+.comment-word {
+  color: #000;
+  font-size: 20px;
+  text-align: center;
+}
+
+.product-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+.province-form {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 10px;
+  margin-top: 10px; /* Adjusted margin top */
+}
+
+.province-form div {
+  flex: 1; /* Equal width for form elements */
+}
+
+.contact-text {
+  text-align: center;
+  margin-top: 10px; /* Adjusted margin top */
+}
+
+.wrapper-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Adjusted margin top */
+}
+
+.neighborhood-input {
+  width: 100%;
+  height: 42px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #767676ff;
+}
+
+.modal-delete,
+.confirmation-confirmation {
+  width: 100%;
+  height: 55px;
+  padding: 12px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+  margin-top: 10px; /* Adjusted margin top */
+}
+
+.modal-delete {
+  border: 1px solid rgba(255, 55, 55, 1);
+  color: rgba(255, 55, 55, 1);
+  background-color: transparent;
+}
+
+.confirmation-confirmation {
+  background-color: rgba(37, 182, 121, 1);
+  color: #fff;
+  border: none;
+  margin-left: 10px; /* Adjusted margin left */
+}
+
+/* Style for the form inside the delete modal */
+.form-comment {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.form-comment label {
+  margin-bottom: 8px;
+}
+
+.form-comment textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.confirmation-btn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  background-color: rgba(37, 182, 121, 1);
+  cursor: pointer;
+}
+
+.modal-delete,
+.confirmation-confirmation {
+  width: 257px;
+  height: 55px;
+  padding: 12px 16px;
+  border-radius: 7px;
+  margin-top: 10px; /* Adjusted margin top */
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px; /* Adjusted line height */
+}
+
+.modal-delete {
+  border: 1px solid rgba(255, 55, 55, 1);
+  color: rgba(255, 55, 55, 1);
+  background-color: transparent;
+  margin-right: 10px; /* Adjusted margin right */
+}
+
+.confirmation-confirmation {
+  background-color: rgba(37, 182, 121, 1);
+  color: #fff;
+  border: none;
+}

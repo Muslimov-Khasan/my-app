@@ -1,0 +1,87 @@
+/* Login.css */
+
+.wrapper-login {
+  display: flex;
+  padding: 100px;
+  border-radius: 8px;
+}
+
+.form-login {
+  max-width: 377px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  transform: translateY(60px);
+}
+.useer-msg {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.label-phone {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-info {
+  color: #6b6b6b;
+  font-family: Nunito Sans;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+}
+
+.login-btn,
+.logout-btn {
+  background-color: #25b679;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background-color: #45a049;
+}
+
+.useer-msg {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.label-phone {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.phone-input,
+.password-input {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-btn {
+  background-color: #25b679;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background-color: #47bf8d;
+}  
