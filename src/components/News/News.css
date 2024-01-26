@@ -132,6 +132,7 @@
   border-radius: 10px;
   transform: translateX(480px);
   border: none;
+  position: absolute;
 }
 
 .news-close-btn {

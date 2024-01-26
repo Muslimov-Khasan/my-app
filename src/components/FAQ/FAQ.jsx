@@ -208,19 +208,19 @@ const FAQ = () => {
           <form className="modal-form" onSubmit={handleFormSubmitFaq}>
             <h2 className="form-error">{formError}</h2>
 
-            <label htmlFor="adminName">Yangilik nomi</label>
+            <label htmlFor="adminName">Savol</label>
             <input
               className="adminName"
               type="text"
               id="adminName"
               name="fullName"
               autoComplete="off"
-              placeholder="Yangilik nomi"
+              placeholder="Savol"
               value={faqData.questionL}
               onChange={(e) => handleInputChange("questionL", e.target.value)}
 
             />
-            <label htmlFor="Comment">Izoh</label>
+            <label htmlFor="Comment">Jovob</label>
             <textarea
               className="comment"
               type="text"
@@ -228,11 +228,11 @@ const FAQ = () => {
               name="comment"
               autoComplete="off"
               value={faqData.answerL}
-              placeholder="Izoh"
+              placeholder="Jovob"
               onChange={(e) => handleInputChange("answerL", e.target.value)}
 
             />
-            <label htmlFor="adminName">Янгилик номи</label>
+            <label htmlFor="adminName">Савол</label>
 
             <input
               className="adminName"
@@ -240,11 +240,11 @@ const FAQ = () => {
               id="adminName"
               name="fullName"
               autoComplete="off"
-              placeholder="Янгилик номи"
+              placeholder="Савол"
               value={faqData.questionK}
               onChange={(e) => handleInputChange("questionK", e.target.value)}
             />
-            <label htmlFor="Comment">Изоҳ</label>
+            <label htmlFor="Comment">Жовоб</label>
             <textarea
               className="comment"
               type="text"
@@ -252,7 +252,7 @@ const FAQ = () => {
               name="comment"
               autoComplete="off"
               value={faqData.answerK}
-              placeholder="Изоҳ"
+              placeholder="Жовоб"
               onChange={(e) => handleInputChange("answerK", e.target.value)}
 
             />

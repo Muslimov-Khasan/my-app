@@ -12,11 +12,27 @@ const Moderator = () => {
   const [editingProduct, setEditingProduct] = useState(null); // New state to hold the product being edited
   const [reportMessage, setReportMessage] = useState(""); // New state for report message
 
-  const openEditModal = (product) => {
-    setEditingProduct(product);
-    setModalIsOpen(true);
-    console.log(product);
+  const openEditModal = async (productId) => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+      const response = await fetch(
+        `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        }
+      );
+      const productData = await response.json();
+      console.log(productData);
+      setEditingProduct(productData);
+      setModalIsOpen(true);
+    } catch (error) {
+      console.error("Error fetching product by ID:", error.message);
+    }
   };
+
   const openModalDelete = () => {
     setModalIsOpenDelete(true);
     closeModal();
@@ -44,8 +60,6 @@ const Moderator = () => {
     const data = await response.json();
 
     setproductsItems(data);
-
-    console.log(data);
   };
 
   useEffect(() => {
@@ -104,25 +118,17 @@ const Moderator = () => {
       const storedToken = localStorage.getItem("authToken");
 
       // Make a POST request to create a report
-      const response = await fetch(
-        "https://avtowatt.uz/api/v1/report/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${storedToken}`,
-          },
-          body: JSON.stringify({
-            message: reportMessage,
-            productId: editingProduct.id, // Assuming editingProduct is the current product being edited
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        console.error("Error creating report:", response.statusText);
-        return;
-      }
+      const response = await fetch("https://avtowatt.uz/api/v1/report/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`,
+        },
+        body: JSON.stringify({
+          message: reportMessage,
+          productId: editingProduct.id, // Assuming editingProduct is the current product being edited
+        }),
+      });
 
       console.log("Report created successfully!");
       setModalIsOpenDelete(false); // Close the modal after creating the report
@@ -145,7 +151,7 @@ const Moderator = () => {
                 <li
                   className="product-item-checked"
                   key={index}
-                  onClick={() => openEditModal(product)} // Open edit modal when clicked
+                  onClick={() => openEditModal(product.id)} // Open edit modal when clicked
                 >
                   <img
                     src={product.photoUrl}
@@ -156,7 +162,9 @@ const Moderator = () => {
                   <div className="wrapper-location">
                     <h2 className="product-title">{product.name}</h2>
                     <p className="product-text-checked">
-                      {product.description}
+                      {product.description.length > 60
+                        ? product.description.slice(0, 60) + "..."
+                        : product.description}{" "}
                     </p>
                     <div className="voydod">
                       <img
@@ -234,7 +242,7 @@ const Moderator = () => {
                 <h2 className="label-img">Rasm *</h2>
                 <img
                   className="photoUrl-img"
-                  src={editingProduct?.photoUrl}
+                  src={editingProduct?.imageList}
                   alt=""
                   width={96}
                   height={96}
@@ -255,9 +263,14 @@ const Moderator = () => {
           <p className="contact-text">Aloqa uchun qo’shimcha telefon raqam</p>
           <a
             className="contact-text"
-            href={`tel:${editingProduct?.additionalPhone.replace(/\D/g, "")}`}
-            style={{display: "block", textAlign: "center", textDecoration: "none", color: "#000"}}
->
+            href={`tel:${editingProduct?.additionalPhone?.replace(/\D/g, "")}`}
+            style={{
+              display: "block",
+              textAlign: "center",
+              textDecoration: "none",
+              color: "#000",
+            }}
+          >
             {editingProduct?.additionalPhone}
           </a>
 
