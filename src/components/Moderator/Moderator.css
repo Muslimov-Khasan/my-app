@@ -155,8 +155,6 @@
 }
 
 .go {
-  margin: 0;
-  padding: 0;
   display: flex;
   margin-left: 11px;
 }
@@ -357,13 +355,14 @@
 }
 
 .product-btn {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   cursor: pointer;
   background: none;
   border: none;
   font-size: 20px;
+
 }
 
 .province-form {
