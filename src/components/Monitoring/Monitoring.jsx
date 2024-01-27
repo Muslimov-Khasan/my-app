@@ -68,8 +68,8 @@ function Monitoring() {
       const tempxData = responseData.map((item) => item.dateInterval);
       const tempyData = responseData.map((item) => item.productCount);
   
-      setxData([0, 0,...tempxData]);
-      setyData([0, 0, ...tempyData]);
+      setxData([...tempxData]);
+      setyData([...tempyData]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
