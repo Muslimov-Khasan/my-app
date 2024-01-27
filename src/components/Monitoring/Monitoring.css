@@ -18,6 +18,11 @@
   letter-spacing: -0.02em;
 }
 
+.card {
+  width: 1300px;
+  margin: 0 auto;
+}
+
 .day-select {
   width: 160px;
   height: 48px;

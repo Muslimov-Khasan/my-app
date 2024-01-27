@@ -94,7 +94,6 @@ const AddCategory = () => {
     const uzbekLatinToCyrillicMapping = {
       a: "а",
       b: "б",
-      // 'c': 'ж',
       d: "д",
       e: "е",
       f: "ф",

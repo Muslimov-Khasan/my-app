@@ -1,14 +1,12 @@
 .news-list {
-  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  left: 21px;
   list-style-type: none;
 }
 
 .news-item {
   width: 635px;
-  height: 205px;
+  height: a;
   margin: 11px;
   padding: 16px;
   border-radius: 8px;
@@ -84,7 +82,7 @@
   color: #fff;
   cursor: pointer;
   background-color: rgba(37, 182, 121, 1);
-  transform: translateX(970px);
+  transform: translateX(1000px);
   margin-top: 20px;
 }
 

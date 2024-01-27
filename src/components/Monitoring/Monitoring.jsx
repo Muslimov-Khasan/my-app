@@ -174,12 +174,14 @@ function Monitoring() {
             value={ChooseDate}
           />
         </div>
+      <div className="card">
 
         <Card>
           <CardBody className="w-full px-2 pb-0">
             <Chart {...chartConfig} />
           </CardBody>
         </Card>
+      </div>
       </div>
     </>
   );

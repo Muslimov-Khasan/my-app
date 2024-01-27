@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  margin-left: 100px;
+  margin-left: 80px;
   margin-bottom: 10px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .shablon {
-  transform: translateX(-50px);
+  transform: translateX(-39px);
 }
 
 .save-btn {
@@ -81,7 +81,7 @@
 }
 
 .edit-img {
-  transform: translateX(150px);
+  transform: translateX(155px);
 }
 .switch {
   position: relative;
@@ -166,7 +166,7 @@ input:checked + .slider + .toggle-message {
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(480px);
+  transform: translateX(450px);
 }
 
 .category-close-btn {
@@ -178,7 +178,7 @@ input:checked + .slider + .toggle-message {
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(400px);
+  transform: translateX(385px);
 }
 @media only screen and (max-width: 1025px) {
   /* Your responsive styles here */

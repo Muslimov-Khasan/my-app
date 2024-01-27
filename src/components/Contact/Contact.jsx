@@ -12,8 +12,10 @@ const Contact = () => {
   const [file, setFile] = useState(null);
   const [img, setImg] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState(""); // Add this line
 
   const [imgaeData, setImageData] = useState({
+    name: "",
     url: "",
     icon: "",
   });
@@ -32,15 +34,12 @@ const Contact = () => {
   const fetchData = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        "https://avtowatt.uz/api/v1/contact/all",
-        {
-          method: "GET", // GET method
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
-        }
-      );
+      const response = await fetch("https://avtowatt.uz/api/v1/contact/all", {
+        method: "GET", // GET method
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      });
       const data = await response.json();
       setFetchedData(data);
     } catch (error) {
@@ -86,6 +85,7 @@ const Contact = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        name,
         icon: icon, // Use imgUrl instead of imageUrl
         url: imgaeData.url,
       }),
@@ -133,6 +133,7 @@ const Contact = () => {
     setIsModalOpen(false);
     setFile(null);
     setImageData({
+      name: "",
       url: "",
       icon: "",
     });
@@ -151,11 +152,11 @@ const Contact = () => {
     <>
       <div className="container">
         <Nav />
-          <div className="contact-boxes">
-            <button className="banner-btn" onClick={openModal}>
-              +
-            </button>
-          </div>
+        <div className="contact-boxes">
+          <button className="banner-btn" onClick={openModal}>
+            +
+          </button>
+        </div>
 
         <div className="contact-wrapper">
           <div className="contact-inner">
@@ -167,6 +168,7 @@ const Contact = () => {
                 <tr>
                   <th>ID</th>
                   <th>Rasm</th>
+                  <th>Nomi</th>
                   <th>Link</th>
                   <th></th>
                 </tr>
@@ -182,6 +184,7 @@ const Contact = () => {
                         style={{ width: "50px", height: "50px" }}
                       />
                     </td>
+                    <td>{addcategory.name}</td>
                     <td>
                       <Link
                         className="url-link"
@@ -191,7 +194,6 @@ const Contact = () => {
                         {addcategory.url}
                       </Link>
                     </td>
-
                     <td>
                       <button
                         className="categories-btn"
@@ -239,6 +241,16 @@ const Contact = () => {
                 &#10006;
               </button>
               <h3>Biz bilan bog’lanish</h3>
+              <input
+                className="url-input"
+                type="text"
+                name="name"
+                id="name"
+                value={name}
+                autoComplete="off"
+                placeholder="Ichtimoyi tarmoqlar nomni yozni"
+                onChange={(e) => setName(e.target.value)}
+              />
               <input
                 className="url-input"
                 type="text"
