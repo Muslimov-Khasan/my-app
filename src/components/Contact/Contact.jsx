@@ -202,9 +202,9 @@ const Contact = () => {
                         &#x22EE;
                       </button>
                       {showActions && activeIndex === index && (
-                        <div className="wrapper-buttons">
+                        <div className="contact-buttons">
                           <button
-                            className="button-delete"
+                            className="contact-delete"
                             onClick={() =>
                               handleDeleteButtonClick(addcategory.id)
                             }

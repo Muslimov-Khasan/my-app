@@ -7,7 +7,8 @@ import { imageDb } from "../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Shablon from "../../Assets/img/shablon.png";
 import { Link } from "react-router-dom";
-
+import Edit from "../../Assets/img/edit.png";
+import Trush_Icon from "../../Assets/img/Trush_Icon.png"
 const AddCategory = () => {
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -334,7 +335,7 @@ const AddCategory = () => {
     setActiveIndex(index);
     setShowActions((prevShowActions) => !prevShowActions);
   };
-  
+
   Modal.setAppElement("#root");
   return (
     <div className="container">
@@ -413,28 +414,36 @@ const AddCategory = () => {
                   className="categories-btn"
                   onClick={() => {
                     threePointButton(index);
-                  }}                >
+                  }}
+                >
                   &#x22EE;
                 </button>
 
                 {showActions && activeIndex === index && (
-                  <div className="wrapper-buttons">
+                  <div className="addcategories-buttons">
                     <button
-                      className="button-delete"
+                      className="addcategories-delete"
                       onClick={() => {
                         handleDeleteClick(index);
                         setShowActions(false); // Close the options after deleting
                       }}
                     >
+                      <img
+                        src={Trush_Icon}
+                        alt="Trush Icon"
+                        width={20}
+                        height={20}
+                      />
                       o'chirish
                     </button>
                     <button
-                      className="button-edit"
+                      className="addcategories-edit"
                       onClick={() => {
                         handleEditClick(index);
                         setShowActions(false); // Close the options after editing
                       }}
                     >
+                      <img src={Edit} alt="Edit" width={25} height={25} />
                       Tahrirlash
                     </button>
                   </div>

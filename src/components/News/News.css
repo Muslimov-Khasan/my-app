@@ -131,6 +131,7 @@
   transform: translateX(480px);
   border: none;
   position: absolute;
+  z-index: 500;
 }
 
 .news-close-btn {

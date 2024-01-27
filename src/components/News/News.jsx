@@ -293,7 +293,7 @@ const News = () => {
                   onClick={() => handleDeleteClick(newsItem.id)}
                 >
                   <img src={Trush_Icon} alt="Trush" width={25} height={25} />{" "}
-                  Delete
+                  O'chirish
                 </button>
               </div>
             )}

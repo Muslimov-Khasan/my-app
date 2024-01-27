@@ -24,7 +24,12 @@ const FAQ = () => {
     const { questionL, questionK, answerL, answerK } = faqData;
 
     // Check if any input length is 0
-    if (questionL.length === 0 || questionK.length === 0 || answerL.length === 0 || answerK.length === 0) {
+    if (
+      questionL.length === 0 ||
+      questionK.length === 0 ||
+      answerL.length === 0 ||
+      answerK.length === 0
+    ) {
       setFormError("Barcha malumotlarni to'ldirish shart ?!.");
       return;
     }
@@ -218,7 +223,6 @@ const FAQ = () => {
               placeholder="Savol"
               value={faqData.questionL}
               onChange={(e) => handleInputChange("questionL", e.target.value)}
-
             />
             <label htmlFor="Comment">Jovob</label>
             <textarea
@@ -230,7 +234,6 @@ const FAQ = () => {
               value={faqData.answerL}
               placeholder="Jovob"
               onChange={(e) => handleInputChange("answerL", e.target.value)}
-
             />
             <label htmlFor="adminName">Савол</label>
 
@@ -254,7 +257,6 @@ const FAQ = () => {
               value={faqData.answerK}
               placeholder="Жовоб"
               onChange={(e) => handleInputChange("answerK", e.target.value)}
-
             />
 
             <button className="save-btn" type="submit">
@@ -280,7 +282,7 @@ const FAQ = () => {
                   onClick={() => handleDeleteClick(faqItem.id)}
                 >
                   <img src={Trush_Icon} alt="Trush" width={25} height={25} />{" "}
-                  Delete
+                  O'chirish
                 </button>
               </div>
             )}
