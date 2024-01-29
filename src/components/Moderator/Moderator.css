@@ -42,7 +42,7 @@
 .product-title {
   padding: 0;
   margin: 0;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -59,7 +59,7 @@
 }
 
 .moderator-title {
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 24px;
   font-weight: 700;
   line-height: 31px;
@@ -68,7 +68,7 @@
 }
 
 .product-text {
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 22px;
@@ -76,7 +76,7 @@
 }
 
 .location-word {
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 17px;
   font-weight: 700;
   line-height: 22px;
@@ -87,7 +87,7 @@
 
 .kg {
   margin-left: 12px;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 20px;
   font-weight: 700;
   transform: translateY(-15px);
@@ -98,7 +98,7 @@
 
 .price {
   margin-left: 20px;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 28px;
   color: rgba(37, 182, 121, 1);
   font-weight: 700;
@@ -176,7 +176,7 @@
 }
 
 .moderator-title {
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 24px;
   font-weight: 700;
   line-height: 31px;
@@ -186,7 +186,7 @@
 }
 
 .product-text-checked {
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 22px;
@@ -196,7 +196,7 @@
 
 .kg {
   margin-left: 12px;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 20px;
   font-weight: 700;
   transform: translateY(-20px);
@@ -207,7 +207,7 @@
 
 .price {
   margin-left: 20px;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
   font-size: 28px;
   color: rgba(37, 182, 121, 1);
   font-weight: 700;
@@ -249,27 +249,32 @@
   background-color: rgba(250, 250, 250, 1);
 }
 
-.images {
+.comment-wrapper {
+  display: flex;
+  transform: translateX(50px);
+  margin-bottom: 60px;
+}
+.region-wrapper {
+  display: flex;
+  transform: translateX(50px);
+  margin-bottom: 30px;
+}
+
+.contact-info {
+  margin-bottom: 22px;
+}
+
+.imgages {
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  transform: translateY(20px);
-}
-
-.form-lord {
-  align-items: center;
-  margin: 0 auto;
 }
 
 .photoUrl-img {
   display: flex;
   margin: 0 auto;
-}
-
-.label-img {
-  text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .form-price {
@@ -277,6 +282,31 @@
   display: flex;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 22px;
+}
+
+.product-btn {
+  width: 24px;
+  height: 24px;
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(750px);
+}
+
+.moderator-btn {
+  width: 24px;
+  height: 24px;
+  border: 3px;
+  font-size: 20px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(500px);
 }
 
 .province-select {
@@ -298,19 +328,18 @@
 }
 
 /* Style for the delete modal */
-.react-modal-content {
-  width: auto;
-  height: auto;
-  position: relative;
-  margin: 0 auto;
-  padding: 40px 64px;
-  border-radius: 8px;
-  max-width: 600px;
+.react-modal-moderator {
+  width: 848px;
+  height: 715px;
   outline: none;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: scroll;
 }
+
+.comment-title {
+  transform: translateX(180px);
+}
+
 
 /* Style for the overlay */
 .react-modal-overlay {
@@ -328,7 +357,6 @@
 
 .manko {
   display: flex;
-  flex-wrap: wrap;
 }
 
 /* Style for the form inside the modal */
@@ -339,31 +367,49 @@
 }
 
 .contact-price {
-  transform: translateX(80px);
-  text-align: center;
+  width: 348px;
+  height: 38px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #FAFAFAFF;
+  margin-left: 12px;
 }
 
 .contact-weight {
-  transform: translateX(100px);
-  text-align: center;
+  width: 348px;
+  height: 38px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #FAFAFAFF;
+  margin-left: 12px;
 }
 
 .comment-word {
-  color: #000;
-  font-size: 20px;
+  width: 700px;
+  font-size: 18px;
   text-align: center;
+  margin-left: 11px;
+  letter-spacing: normal;
+  font-weight: 400;
+  margin: 0 auto;
+}
+.region-word {
+  width: 400px;
+  font-size: 18px;
+  text-align: center;
+  margin-left: 11px;
+  letter-spacing: normal;
+  font-weight: 400;
 }
 
-.product-btn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 20px;
-
-}
+.product-word {
+  width: 348px;
+  height: 38px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #FAFAFAFF;
+  margin-left: 12px;
+  }
 
 .province-form {
   display: flex;
@@ -422,7 +468,6 @@
 
 /* Style for the form inside the delete modal */
 .form-comment {
-  width: 300px;
   margin: 0 auto;
 }
 
@@ -466,10 +511,4 @@
   color: rgba(255, 55, 55, 1);
   background-color: transparent;
   margin-right: 10px; /* Adjusted margin right */
-}
-
-.confirmation-confirmation {
-  background-color: rgba(37, 182, 121, 1);
-  color: #fff;
-  border: none;
 }

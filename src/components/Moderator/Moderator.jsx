@@ -13,24 +13,19 @@ const Moderator = () => {
   const [reportMessage, setReportMessage] = useState(""); // New state for report message
 
   const openEditModal = async (productId) => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
-        }
-      );
-      const productData = await response.json();
-      console.log(productData);
-      setEditingProduct(productData);
-      setModalIsOpen(true);
-    } catch (error) {
-      console.error("Error fetching product by ID:", error.message);
-    }
+    const storedToken = localStorage.getItem("authToken");
+    const response = await fetch(
+      `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      }
+    );
+    const productData = await response.json();
+    setEditingProduct(productData);
+    setModalIsOpen(true);
   };
 
   const openModalDelete = () => {
@@ -58,7 +53,6 @@ const Moderator = () => {
     );
 
     const data = await response.json();
-
     setproductsItems(data);
   };
 
@@ -87,57 +81,45 @@ const Moderator = () => {
   }, []);
 
   const handleUpdateProduct = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        `https://avtowatt.uz/api/v1/products/${editingProduct.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${storedToken}`,
-          },
-          body: JSON.stringify(editingProduct),
-        }
-      );
-
-      // Handle successful update
-      console.log("Product updated successfully!");
-      setModalIsOpen(false); // Close the modal after updating
-      fetchData(); // Fetch data to update the product list
-      fetchDataCheked();
-    } catch (error) {
-      console.error("Error updating product:", error.message);
-    }
-  };
-
-  const handleCreateReport = async (event) => {
-    event.preventDefault();
-
-    try {
-      const storedToken = localStorage.getItem("authToken");
-
-      // Make a POST request to create a report
-      const response = await fetch("https://avtowatt.uz/api/v1/report/create", {
-        method: "POST",
+    const storedToken = localStorage.getItem("authToken");
+    const response = await fetch(
+      `https://avtowatt.uz/api/v1/products/${editingProduct.id}`,
+      {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${storedToken}`,
         },
-        body: JSON.stringify({
-          message: reportMessage,
-          productId: editingProduct.id, // Assuming editingProduct is the current product being edited
-        }),
-      });
+        body: JSON.stringify(editingProduct),
+      }
+    );
 
-      console.log("Report created successfully!");
-      setModalIsOpenDelete(false); // Close the modal after creating the report
-      setReportMessage(""); // Reset the reportMessage state to an empty string
-    } catch (error) {
-      console.error("Error creating report:", error.message);
-    }
+    // Handle successful update
+    setModalIsOpen(false); // Close the modal after updating
+    fetchData(); // Fetch data to update the product list
+    fetchDataCheked();
   };
 
+  const handleCreateReport = async (event) => {
+    event.preventDefault();
+    const storedToken = localStorage.getItem("authToken");
+
+    // Make a POST request to create a report
+    const response = await fetch("https://avtowatt.uz/api/v1/report/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${storedToken}`,
+      },
+      body: JSON.stringify({
+        message: reportMessage,
+        productId: editingProduct.id, // Assuming editingProduct is the current product being edited
+      }),
+    });
+    setModalIsOpenDelete(false); // Close the modal after creating the report
+    setReportMessage(""); // Reset the reportMessage state to an empty string
+    const data = response.json();
+  };
   Modal.setAppElement("#root"); // Assuming your root element has the id "root"
   return (
     <>
@@ -199,7 +181,12 @@ const Moderator = () => {
                   />
                   <div className="wrapper-location">
                     <h2 className="product-title">{product.name}</h2>
-                    <p className="product-text">{product.description}</p>
+                    <p className="product-text">
+                      {" "}
+                      {product.description.length > 60
+                        ? product.description.slice(0, 60) + "..."
+                        : product.description}
+                    </p>
                     <div className="voydod">
                       <img
                         className="location-icon"
@@ -223,23 +210,29 @@ const Moderator = () => {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        className="react-modal-content"
+        className="react-modal-moderator"
         overlayClassName="react-modal-overlay"
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <button className="product-btn" onClick={closeModal}>
-          &#10006;
-        </button>
-        <div className="good">
-          <div className="form-product">
-            <h2>{editingProduct?.name}</h2>
-          </div>
+        <div className="contianer">
 
-          <div className="imgages">
-            <div className="form-lord">
-              <div>
-                <h2 className="label-img">Rasm *</h2>
+        <div className="modal-content">
+          <div className="good">
+            <button className="product-btn" onClick={closeModal}>
+              &#10006;
+            </button>
+
+            <div className="comment-wrapper">
+              <p className="product-word">
+                {editingProduct?.category.name} Mahsulot nomi
+              </p>
+              <p className="product-word">
+                {editingProduct?.category.category.name} category nomi
+              </p>
+            </div>
+            <div className="imgages">
+              <div className="form-lord">
                 <img
                   className="photoUrl-img"
                   src={editingProduct?.imageList}
@@ -249,43 +242,50 @@ const Moderator = () => {
                 />
               </div>
             </div>
-          </div>
 
-          <div className="form-price">
-            <h2 className="contact-price">{editingProduct?.price} narxi</h2>
-            <h2 className="contact-weight">{editingProduct?.weight} Vazni</h2>
-          </div>
-          <div>
-            <p className="comment-word">{editingProduct?.description}</p>
-            <p className="comment-word">{editingProduct?.region}</p>
-            <p className="comment-word">{editingProduct?.district}</p>
-          </div>
-          <p className="contact-text">Aloqa uchun qo’shimcha telefon raqam</p>
-          <a
-            className="contact-text"
-            href={`tel:${editingProduct?.additionalPhone?.replace(/\D/g, "")}`}
-            style={{
-              display: "block",
-              textAlign: "center",
-              textDecoration: "none",
-              color: "#000",
-            }}
-          >
-            {editingProduct?.additionalPhone}
-          </a>
-
-          <div className="wrapper-button">
-            <button className="modal-delete" onClick={openModalDelete}>
-              Shikoyat
-            </button>
-            <button
-              className="confirmation-confirmation"
-              onClick={handleUpdateProduct}
+            <div className="form-price">
+              <p className="contact-price">{editingProduct?.price} narxi</p>
+              <p className="contact-weight">{editingProduct?.weight} Vazni</p>
+            </div>
+            <div className="contact-info">
+              <p className="comment-word">{editingProduct?.description}</p>
+            </div>
+            <div className="region-wrapper">
+              <p className="region-word">{editingProduct?.region} viloyat</p>
+              <p className="region-words">{editingProduct?.district} Tuman</p>
+            </div>
+            <p className="contact-text">Aloqa uchun qo’shimcha telefon raqam</p>
+            <a
+              className="contact-text"
+              href={`tel:${editingProduct?.additionalPhone?.replace(
+                /\D/g,
+                ""
+              )}`}
+              style={{
+                display: "block",
+                textAlign: "center",
+                textDecoration: "none",
+                color: "#000",
+              }}
             >
-              Tasdiqlash
-            </button>
+              {editingProduct?.additionalPhone}
+            </a>
+
+            <div className="wrapper-button">
+              <button className="modal-delete" onClick={openModalDelete}>
+                Shikoyat
+              </button>
+              <button
+                className="confirmation-confirmation"
+                onClick={handleUpdateProduct}
+              >
+                Tasdiqlash
+              </button>
+            </div>
           </div>
         </div>
+        </div>
+
       </Modal>
 
       <Modal
@@ -296,8 +296,13 @@ const Moderator = () => {
         contentLabel="Example Modal"
       >
         <div>
+          <button className="moderator-btn" onClick={closeModalDelete}>
+            &#10006;
+          </button>
           <form className="form-comment">
-            <label htmlFor="Izoh">Izoh</label>
+            <label htmlFor="Shikoyat haqida qisqacha izoh *">
+              Shikoyat haqida qisqacha izoh
+            </label>
             <textarea
               cols="30"
               rows="10"
