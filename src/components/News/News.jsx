@@ -71,39 +71,33 @@ const News = () => {
       setFormError("Barcha malumotlarni to'ldirish shart ?!.");
       return;
     }
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const { titleL, titleK, messageL, messageK } = newsaddData;
-      const response = await fetch("https://avtowatt.uz/api/v1/news", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${storedToken}`,
-        },
-        body: JSON.stringify({
-          titleK,
-          titleL,
-          messageK,
-          messageL,
-        }),
-      });
-      const responseData = await response.json();
-
-      setnewsaddData({
-        titleK: "",
-        titleL: "",
-        messageK: "",
-        messageL: "",
-      });
-      setNewsItems((prevNewsItems) => [...prevNewsItems, responseData]);
-    } catch (error) {
-      setFormError(
-        "Yangilik qo‘shib bo‘lmadi. Iltimos, yana bir bor urinib ko'ring.",
-        error
-      );
-      return;
-    }
-
+  
+    const storedToken = localStorage.getItem("authToken");
+  
+    const response = await fetch("https://avtowatt.uz/api/v1/news", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${storedToken}`,
+      },
+      body: JSON.stringify({
+        titleK,
+        titleL,
+        messageK,
+        messageL,
+      }),
+    });
+  
+    const responseData = await response.json();
+  
+    setnewsaddData({
+      titleK: "",
+      titleL: "",
+      messageK: "",
+      messageL: "",
+    });
+    setNewsItems((prevNewsItems) => [...prevNewsItems, responseData]);
+  
     // Clear the input fields
     setnewsaddData({
       titleK: "",
@@ -111,7 +105,7 @@ const News = () => {
       messageK: "",
       messageL: "",
     });
-
+  
     closeModal();
   };
 

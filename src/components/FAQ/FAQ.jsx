@@ -46,38 +46,24 @@ const FAQ = () => {
         answerK,
       }),
     });
-    try {
-      const responseData = await response.json();
-      setFaqItems((prevFaqItems) => [...prevFaqItems, responseData]);
-      console.log(responseData);
-    } catch (error) {
-      console.error("Error parsing JSON:", error);
-      // Handle the error appropriately
-    }
-
+    const responseData = await response.json();
+    setFaqItems((prevFaqItems) => [...prevFaqItems, responseData]);
     fetchDataFaq();
     setFormError("");
     closeModal();
   };
 
   const fetchDataFaq = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await fetch("https://avtowatt.uz/api/v1/faq/all", {
-        method: "GET", // GET method
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      });
+    const storedToken = localStorage.getItem("authToken");
+    const response = await fetch("https://avtowatt.uz/api/v1/faq/all", {
+      method: "GET", // GET method
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      },
+    });
 
-      if (!response.ok) {
-        return;
-      }
-      const data = await response.json();
-      setFaqItems(data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
+    const data = await response.json();
+    setFaqItems(data);
   };
 
   function convertUzbekLatinToCyrillic(uzbekLatinWord) {
