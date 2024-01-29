@@ -205,10 +205,10 @@ const FAQ = () => {
       >
         <div className="modal-content">
           <div className="modal-header">
-            <button className="close-btn" onClick={closeModal}>
+            <button className="news-close-btn" onClick={closeModal}>
               &#10006;
             </button>
-            <h2 className="modal-title">Bo’lim qo’shish</h2>
+            <h2 className="modal-title">FAQ qo’shish</h2>
           </div>
           <form className="modal-form" onSubmit={handleFormSubmitFaq}>
             <h2 className="form-error">{formError}</h2>

@@ -196,12 +196,11 @@ tbody tr:hover {
   width: 24px;
   height: 24px; 
   border: 3px;
-  font-size: 20px;
   color: rgba(107, 107, 107, 1);
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(300px);
+  transform: translateX(490px);
 }
 
 .editd-btn {
@@ -213,7 +212,7 @@ tbody tr:hover {
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(300px);
+  transform: translateX(506px);
 }
 @media only screen and (max-width: 768px) and (max-width: 1024px) {
   .box {

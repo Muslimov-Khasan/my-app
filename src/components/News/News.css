@@ -143,7 +143,7 @@
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(300px);
+  transform: translateX(500px);
 }
 @media only screen and (max-width: 1025px) and (max-width: 1000px) {
   .news-list {

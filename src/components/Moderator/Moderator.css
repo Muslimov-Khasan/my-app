@@ -35,10 +35,6 @@
   cursor: pointer;
 }
 
-.go {
-  margin-left: 11px;
-}
-
 .product-title {
   padding: 0;
   margin: 0;
@@ -96,18 +92,6 @@
   text-align: left;
 }
 
-.price {
-  margin-left: 20px;
-  font-family: "Nunito Sans";
-  font-size: 28px;
-  color: rgba(37, 182, 121, 1);
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: -0.02em;
-  text-align: left;
-  transform: translateY(-32px);
-}
-
 .container-fluid {
   max-width: 1050px;
   margin: 0 auto;
@@ -156,7 +140,7 @@
 
 .go {
   display: flex;
-  margin-left: 11px;
+  margin-left: 1px;
 }
 
 .wrapper-location {
@@ -167,12 +151,14 @@
 
 .voydod {
   display: flex;
+  margin-left: 11px;
 }
 
 .location-icon {
   max-width: 100%;
   height: auto;
   transform: translateY(-36px);
+  margin-right: 8px;
 }
 
 .moderator-title {
@@ -206,14 +192,13 @@
 }
 
 .price {
-  margin-left: 20px;
   font-family: "Nunito Sans";
   font-size: 28px;
   color: rgba(37, 182, 121, 1);
   font-weight: 700;
   line-height: 36px;
   letter-spacing: -0.02em;
-  text-align: left;
+  margin-left: 10px;
   transform: translateY(-32px);
 }
 
@@ -339,7 +324,6 @@
 .comment-title {
   transform: translateX(180px);
 }
-
 
 /* Style for the overlay */
 .react-modal-overlay {

@@ -27,12 +27,10 @@
 }
 
 .modal-body form label {
-  width: auto;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
-  margin-left: 80px;
   margin-bottom: 10px;
 }
 
@@ -45,12 +43,15 @@
   margin-bottom: 10px;
 }
 .modal-body-editd form label {
-  width: auto;
+  width: 300px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  transform: translateX(50px);
   margin-bottom: 10px;
+}
+
+.btn-file {
+  margin: 0 auto;
 }
 
 .modal-body-editd form input[type="text"] {
@@ -79,10 +80,6 @@
   text-align: center;
   cursor: pointer;
   margin: 0 auto;
-}
-
-.shablon {
-  transform: translateX(-39px);
 }
 
 .save-btn {
@@ -115,7 +112,7 @@
 }
 
 .edit-img {
-  transform: translateX(155px);
+  transform: translateX(250px);
 }
 .switch {
   position: relative;
@@ -200,7 +197,7 @@ input:checked + .slider + .toggle-message {
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(450px);
+  transform: translateX(500px);
 }
 
 .category-close-btn {
@@ -212,7 +209,7 @@ input:checked + .slider + .toggle-message {
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(385px);
+  transform: translateX(495px);
 }
 @media only screen and (max-width: 1025px) {
   /* Your responsive styles here */

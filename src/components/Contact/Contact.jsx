@@ -97,6 +97,7 @@ const Contact = () => {
     closeModal();
     resetFile();
     setImageData("");
+    setName("");
   };
 
   const handleDeleteButtonClick = async (itemId) => {
@@ -240,7 +241,7 @@ const Contact = () => {
               <button className="contact-close" onClick={closeModal}>
                 &#10006;
               </button>
-              <h3>Biz bilan bog’lanish</h3>
+              <h3 className="contact-title">Biz bilan bog’lanish</h3>
               <input
                 className="url-input"
                 type="text"

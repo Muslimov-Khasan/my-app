@@ -552,7 +552,7 @@ const AddCategory = () => {
                 style={{ display: "none" }}
               />
               <button className="btn-file" onClick={handleFileChangeEdit}>
-                <img className="shablon-no" src={Shablon} alt="" width={365} />
+                <img  src={Shablon} alt="" width={365} />
               </button>
 
               <img

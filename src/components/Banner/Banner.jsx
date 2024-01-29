@@ -202,7 +202,7 @@ const Banner = () => {
               <button className="banner-close" onClick={closeModal}>
                 &#10006;
               </button>
-              <h3>Rasm Yuklash</h3>
+              <h3 className="banner-title">Rasm Yuklash</h3>
               
               <button className="btn-button-file" onClick={handleUploadClick}>
                 <img className="Shablon" src={Shablon} alt="" width={465} />
