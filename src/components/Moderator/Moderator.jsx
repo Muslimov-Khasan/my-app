@@ -11,6 +11,7 @@ const Moderator = () => {
   const [productsItemsCheked, setproductsItemsCheked] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null); // New state to hold the product being edited
   const [reportMessage, setReportMessage] = useState(""); // New state for report message
+  const [modalIsOpenProductList, setModalIsOpenProductList] = useState(false);
 
   const openEditModal = async (productId) => {
     const storedToken = localStorage.getItem("authToken");
@@ -26,6 +27,29 @@ const Moderator = () => {
     const productData = await response.json();
     setEditingProduct(productData);
     setModalIsOpen(true);
+  };
+  const openEditModalOK = async (productId) => {
+    const storedToken = localStorage.getItem("authToken");
+    const response = await fetch(
+      `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      }
+    );
+    const productData = await response.json();
+    setEditingProduct(productData);
+    setModalIsOpenProductList(true);
+  };
+
+  const openModalProductList = () => {
+    setModalIsOpenProductList(true);
+  };
+
+  const closeModalProductList = () => {
+    setModalIsOpenProductList(false);
   };
 
   const openModalDelete = () => {
@@ -171,21 +195,25 @@ const Moderator = () => {
         <div className="contianer-fulid">
           <div className="all">
             <ul className="product-list">
-              {productsItemsCheked.map((product, index) => (
-                <li className="product-item" key={index}>
+              {productsItemsCheked.map((productCheked, index) => (
+                <li
+                  className="product-item"
+                  key={index}
+                  onClick={() => openEditModalOK(productCheked.id)}
+                >
                   <img
-                    src={product.photoUrl}
-                    alt={product.name}
+                    src={productCheked.photoUrl}
+                    alt={productCheked.name}
                     width={170}
                     height={160}
                   />
                   <div className="wrapper-location">
-                    <h2 className="product-title">{product.name}</h2>
+                    <h2 className="product-title">{productCheked.name}</h2>
                     <p className="product-text">
                       {" "}
-                      {product.description.length > 60
-                        ? product.description.slice(0, 60) + "..."
-                        : product.description}
+                      {productCheked.description.length > 60
+                        ? productCheked.description.slice(0, 60) + "..."
+                        : productCheked.description}
                     </p>
                     <div className="voydod">
                       <img
@@ -196,9 +224,9 @@ const Moderator = () => {
                         height={23}
                       />
                       <div className="go">
-                        <p className="location-word">{product.region}</p>
-                        <p className="kg">{product.weight} kg</p>
-                        <p className="price">{product.price} So'm</p>
+                        <p className="location-word">{productCheked.region}</p>
+                        <p className="kg">{productCheked.weight} kg</p>
+                        <p className="price">{productCheked.price} So'm</p>
                       </div>
                     </div>
                   </div>
@@ -216,76 +244,143 @@ const Moderator = () => {
         contentLabel="Example Modal"
       >
         <div className="contianer">
+          <div className="modal-content">
+            <div className="good">
+              <button className="product-btn" onClick={closeModal}>
+                &#10006;
+              </button>
 
-        <div className="modal-content">
-          <div className="good">
-            <button className="product-btn" onClick={closeModal}>
-              &#10006;
-            </button>
-
-            <div className="comment-wrapper">
-              <p className="product-word">
-                {editingProduct?.category.name} Mahsulot nomi
-              </p>
-              <p className="product-word">
-                {editingProduct?.category.category.name} category nomi
-              </p>
-            </div>
-            <div className="imgages">
-              <div className="form-lord">
-                <img
-                  className="photoUrl-img"
-                  src={editingProduct?.imageList}
-                  alt=""
-                  width={96}
-                  height={96}
-                />
+              <div className="comment-wrapper">
+                <p className="product-word">
+                  {editingProduct?.category.name} Mahsulot nomi
+                </p>
+                <p className="product-word">
+                  {editingProduct?.category.category.name} category nomi
+                </p>
               </div>
-            </div>
+              <div className="imgages">
+                <div className="form-lord">
+                  <img
+                    className="photoUrl-img"
+                    src={editingProduct?.imageList}
+                    alt=""
+                    width={96}
+                    height={96}
+                  />
+                </div>
+              </div>
 
-            <div className="form-price">
-              <p className="contact-price">{editingProduct?.price} narxi</p>
-              <p className="contact-weight">{editingProduct?.weight} Vazni</p>
-            </div>
-            <div className="contact-info">
-              <p className="comment-word">{editingProduct?.description}</p>
-            </div>
-            <div className="region-wrapper">
-              <p className="region-word">{editingProduct?.region} viloyat</p>
-              <p className="region-words">{editingProduct?.district} Tuman</p>
-            </div>
-            <p className="contact-text">Aloqa uchun qo’shimcha telefon raqam</p>
-            <a
-              className="contact-text"
-              href={`tel:${editingProduct?.additionalPhone?.replace(
-                /\D/g,
-                ""
-              )}`}
-              style={{
-                display: "block",
-                textAlign: "center",
-                textDecoration: "none",
-                color: "#000",
-              }}
-            >
-              {editingProduct?.additionalPhone}
-            </a>
-
-            <div className="wrapper-button">
-              <button className="modal-delete" onClick={openModalDelete}>
-                Shikoyat
-              </button>
-              <button
-                className="confirmation-confirmation"
-                onClick={handleUpdateProduct}
+              <div className="form-price">
+                <p className="contact-price">{editingProduct?.price} narxi</p>
+                <p className="contact-weight">{editingProduct?.weight} Vazni</p>
+              </div>
+              <div className="contact-info">
+                <p className="comment-word">{editingProduct?.description}</p>
+              </div>
+              <div className="region-wrapper">
+                <p className="region-word">{editingProduct?.region} viloyat</p>
+                <p className="region-words">{editingProduct?.district} Tuman</p>
+              </div>
+              <p className="contact-text">
+                Aloqa uchun qo’shimcha telefon raqam
+              </p>
+              <a
+                className="contact-text"
+                href={`tel:${editingProduct?.additionalPhone?.replace(
+                  /\D/g,
+                  ""
+                )}`}
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  color: "#000",
+                }}
               >
-                Tasdiqlash
-              </button>
+                {editingProduct?.additionalPhone}
+              </a>
+
+              <div className="wrapper-button">
+                <button className="modal-delete" onClick={openModalDelete}>
+                  Shikoyat
+                </button>
+                <button
+                  className="confirmation-confirmation"
+                  onClick={handleUpdateProduct}
+                >
+                  Tasdiqlash
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        </div>
+      </Modal>
+      <Modal
+        isOpen={modalIsOpenProductList}
+        className="react-modal-moderator"
+        overlayClassName="react-modal-overlay"
+        onRequestClose={closeModalProductList}
+        contentLabel="Product List Modal"
+      >
+        <div className="contianer">
+          <div className="modal-content">
+            <div className="good">
+              <button className="product-btn" onClick={closeModal}>
+                &#10006;
+              </button>
 
+              <div className="comment-wrapper">
+                <p className="product-word">
+                  {editingProduct?.category.name} Mahsulot nomi
+                </p>
+                <p className="product-word">
+                  {editingProduct?.category.category.name} category nomi
+                </p>
+              </div>
+              <div className="imgages">
+                <div className="form-lord">
+                  <img
+                    className="photoUrl-img"
+                    src={editingProduct?.imageList}
+                    alt=""
+                    width={96}
+                    height={96}
+                  />
+                </div>
+              </div>
+
+              <div className="form-price">
+                <p className="contact-price">{editingProduct?.price} narxi</p>
+                <p className="contact-weight">{editingProduct?.weight} Vazni</p>
+              </div>
+              <div className="contact-info">
+                <p className="comment-word">{editingProduct?.description}</p>
+              </div>
+              <div className="region-wrapper">
+                <p className="region-word">{editingProduct?.region} viloyat</p>
+                <p className="region-words">{editingProduct?.district} Tuman</p>
+              </div>
+              <p className="contact-text">
+                Aloqa uchun qo’shimcha telefon raqam
+              </p>
+              <a
+                className="contact-text"
+                href={`tel:${editingProduct?.additionalPhone?.replace(
+                  /\D/g,
+                  ""
+                )}`}
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  color: "#000",
+                }}
+              >
+                {editingProduct?.additionalPhone}
+              </a>
+            </div>
+          </div>
+        </div>
       </Modal>
 
       <Modal
