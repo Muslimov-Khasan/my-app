@@ -32,7 +32,6 @@ const Header = () => {
   }, []);
 
   const fetchDataAll = async () => {
-    try {
       const storedToken = localStorage.getItem("authToken");
       const response = await fetch(
         "https://avtowatt.uz/api/v1/admin/all",
@@ -46,9 +45,6 @@ const Header = () => {
       );
       const data = await response.json();
       setAdminData(data);
-    } catch (error) {
-      console.log("Error fetching admin data:", error);
-    }
   };
 
   const handleFormSubmit = async (event) => {

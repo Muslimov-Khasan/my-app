@@ -52,17 +52,12 @@ const Banner = () => {
   const handleFileChange = async (event) => {
     event.preventDefault();
     const selectedFile = event.target.files[0];
-
-    try {
       const imgRef = ref(imageDb, `files/${v4()}`);
       await uploadBytes(imgRef, selectedFile);
       const imgUrl = await getDownloadURL(imgRef);
 
       setFile(selectedFile);
       setImageData({ ...imgaeData, imageUrl: imgUrl });
-    } catch (error) {
-      console.log("Error uploading file:", error.message);
-    }
   };
 
   const handleUploadClick = (event) => {

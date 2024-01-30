@@ -143,7 +143,6 @@ const Login = () => {
           }
         );
         const dataGet = await responseGetcategory.json();
-        console.log(dataGet.role);
         setCategories(dataGet);
         if (dataGet.role === "ROLE_MODERATOR") {
           navigate("/Moderator");
