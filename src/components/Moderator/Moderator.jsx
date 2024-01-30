@@ -182,7 +182,7 @@ const Moderator = () => {
                       />
                       <div className="go">
                         <p className="location-word">{product.region}</p>
-                        <p className="kg">{product.weight} kg</p>
+                        <p className="kg">{product.weight} tonna</p>
                         <p className="price">{product.price} So'm</p>
                       </div>
                     </div>
@@ -225,7 +225,7 @@ const Moderator = () => {
                       />
                       <div className="go">
                         <p className="location-word">{productCheked.region}</p>
-                        <p className="kg">{productCheked.weight} kg</p>
+                        <p className="kg">{productCheked.weight} tonna</p>
                         <p className="price">{productCheked.price} So'm</p>
                       </div>
                     </div>
@@ -249,13 +249,15 @@ const Moderator = () => {
               <button className="product-btn" onClick={closeModal}>
                 &#10006;
               </button>
+              <div className="strong-wrapper">
+                <strong className="strong-word">Nomi</strong>
+                <strong className="strong-words">Kategoriya</strong>
+              </div>
+              <div className="product-wrapper">
+                <p className="product-word">{editingProduct?.category.name}</p>
 
-              <div className="comment-wrapper">
                 <p className="product-word">
-                  {editingProduct?.category.name} Mahsulot nomi
-                </p>
-                <p className="product-word">
-                  {editingProduct?.category.category.name} category nomi
+                  {editingProduct?.category.category.name}
                 </p>
               </div>
               <div className="imgages">
@@ -269,17 +271,30 @@ const Moderator = () => {
                   />
                 </div>
               </div>
-
+              <div className="strong-wrapper">
+                <strong className="strong-price">Narx (so’m)</strong>
+                <strong className="strong-weight">Miqdori (tonna) *</strong>
+              </div>      
               <div className="form-price">
-                <p className="contact-price">{editingProduct?.price} narxi</p>
-                <p className="contact-weight">{editingProduct?.weight} Vazni</p>
+                <p className="contact-price">{editingProduct?.price} </p>
+                <p className="contact-weight">{editingProduct?.weight} </p>
+              </div>
+              <div className="strong-comment">
+
+                <strong>Izoh</strong>
               </div>
               <div className="contact-info">
                 <p className="comment-word">{editingProduct?.description}</p>
               </div>
-              <div className="region-wrapper">
-                <p className="region-word">{editingProduct?.region} viloyat</p>
-                <p className="region-words">{editingProduct?.district} Tuman</p>
+              <div className="strong-wrapper">
+                <strong className="strong-price">Viloyat</strong>
+                <strong className="strong-tumann">Tuman</strong>
+                <strong className="strong-address">Qishloq / Mahalla nomi</strong>
+              </div>      
+              <div className="form-location">
+                <p className="contact-price">{editingProduct?.region} </p>
+                <p className="contact-weight">{editingProduct?.district} </p>
+                <p className="contact-weight">{editingProduct?.address} </p>
               </div>
               <p className="contact-text">
                 Aloqa uchun qo’shimcha telefon raqam
@@ -322,19 +337,21 @@ const Moderator = () => {
         onRequestClose={closeModalProductList}
         contentLabel="Product List Modal"
       >
-        <div className="contianer">
+         <div className="contianer">
           <div className="modal-content">
             <div className="good">
               <button className="product-btn" onClick={closeModal}>
                 &#10006;
               </button>
+              <div className="strong-wrapper">
+                <strong className="strong-word">Nomi</strong>
+                <strong className="strong-words">Kategoriya</strong>
+              </div>
+              <div className="product-wrapper">
+                <p className="product-word">{editingProduct?.category.name}</p>
 
-              <div className="comment-wrapper">
                 <p className="product-word">
-                  {editingProduct?.category.name} Mahsulot nomi
-                </p>
-                <p className="product-word">
-                  {editingProduct?.category.category.name} category nomi
+                  {editingProduct?.category.category.name}
                 </p>
               </div>
               <div className="imgages">
@@ -348,17 +365,30 @@ const Moderator = () => {
                   />
                 </div>
               </div>
-
+              <div className="strong-wrapper">
+                <strong className="strong-price">Narx (so’m)</strong>
+                <strong className="strong-weight">Miqdori (tonna) *</strong>
+              </div>      
               <div className="form-price">
-                <p className="contact-price">{editingProduct?.price} narxi</p>
-                <p className="contact-weight">{editingProduct?.weight} Vazni</p>
+                <p className="contact-price">{editingProduct?.price} </p>
+                <p className="contact-weight">{editingProduct?.weight} </p>
+              </div>
+              <div className="strong-comment">
+
+                <strong>Izoh</strong>
               </div>
               <div className="contact-info">
                 <p className="comment-word">{editingProduct?.description}</p>
               </div>
-              <div className="region-wrapper">
-                <p className="region-word">{editingProduct?.region} viloyat</p>
-                <p className="region-words">{editingProduct?.district} Tuman</p>
+              <div className="strong-wrapper">
+                <strong className="strong-price">Viloyat</strong>
+                <strong className="strong-tumann">Tuman</strong>
+                <strong className="strong-address">Qishloq / Mahalla nomi</strong>
+              </div>      
+              <div className="form-location">
+                <p className="contact-price">{editingProduct?.region} </p>
+                <p className="contact-weight">{editingProduct?.district} </p>
+                <p className="contact-weight">{editingProduct?.address} </p>
               </div>
               <p className="contact-text">
                 Aloqa uchun qo’shimcha telefon raqam

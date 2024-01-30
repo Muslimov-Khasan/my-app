@@ -97,14 +97,14 @@ const Category = () => {
         }),
       }
     );
-      const dataPut = response.json()
+    const dataPut = response.json();
     fetchDataGetAll();
     closeEditModal();
   };
 
   const handleEditInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     if (name === "nameL") {
       let convertWord = convertUzbekLatinToCyrillic(value);
       convertWord = convertWord.charAt(0).toUpperCase() + convertWord.slice(1);
@@ -267,23 +267,20 @@ const Category = () => {
       return;
     }
 
-    const response = await fetch(
-      `https://avtowatt.uz/api/v1/sub-category`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${storedToken}`,
-        },
-        body: JSON.stringify({
-          nameL: e.target.nameL.value,
-          nameK: e.target.nameK.value,
-          categoryId: selectedCategoryId,
-        }),
-      }
-    );
+    const response = await fetch(`https://avtowatt.uz/api/v1/sub-category`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${storedToken}`,
+      },
+      body: JSON.stringify({
+        nameL: e.target.nameL.value,
+        nameK: e.target.nameK.value,
+        categoryId: selectedCategoryId,
+      }),
+    });
     // If the request is successful, fetch updated data
-    const data = response.json()
+    const data = response.json();
     fetchDataGetAll();
     closeModal();
   };
@@ -369,13 +366,19 @@ const Category = () => {
                     <div className="wrapper-buttons">
                       <button
                         className="button-delete"
-                        onClick={() => handleDeleteClick(subCategory.id)}
+                        onClick={() => {
+                          handleDeleteClick(subCategory.id);
+                          setShowActions(false); // Close the options after editing
+                        }}
                       >
                         O’chirish
                       </button>
                       <button
                         className="button-edit"
-                        onClick={() => openEditModal(subCategory)}
+                        onClick={() => {
+                          openEditModal(subCategory);
+                          setShowActions(false); // Close the options after editing
+                        }}
                       >
                         Edit
                       </button>
@@ -410,7 +413,9 @@ const Category = () => {
               value={selectedCategoryId}
               onChange={handleCategoryChange}
             >
-                <option className="select" value="">Tanlang</option>
+              <option className="select" value="">
+                Tanlang
+              </option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.name}

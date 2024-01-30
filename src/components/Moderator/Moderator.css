@@ -5,6 +5,14 @@
   overflow-y: scroll;
 }
 
+.logo {
+  margin-bottom: 11px;
+  transform: translateX(70px);
+  object-fit: contain;
+  margin-top: 11px;
+  cursor: pointer;
+}
+
 .product-list::-webkit-scrollbar {
   width: 12px;
 }
@@ -245,6 +253,20 @@
   margin-bottom: 30px;
 }
 
+.region-list {
+  display: flex;
+  transform: translateX(200px);
+  justify-content: center;
+  list-style: none;
+}
+
+.region-item {
+  display: flex;  
+  text-align: center;
+  margin-left: 11px;
+  font-size: 18px;
+}
+
 .contact-info {
   margin-bottom: 22px;
 }
@@ -268,6 +290,12 @@
   text-align: center;
   margin: 0 auto;
   margin-bottom: 22px;
+}
+
+.form-location {
+  width: 600px;
+  display: flex;
+  margin: 0 auto;
 }
 
 .product-btn {
@@ -314,8 +342,8 @@
 
 /* Style for the delete modal */
 .react-modal-moderator {
-  width: 848px;
-  height: 715px;
+  width: 888px;
+  height: auto;
   outline: none;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -325,19 +353,39 @@
   transform: translateX(180px);
 }
 
-/* Style for the overlay */
-.react-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+.product-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other elements */
+  margin-bottom: 50px;
 }
+
+.strong-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.strong-word {
+  transform: translateX(-90px);
+}
+.strong-words {
+  transform: translateX(-120px);
+}
+
+.strong-price {
+  transform: translateX(100px);
+  font-weight: 700;
+}
+
+.strong-weight {
+  transform: translateX(-120px);
+  font-weight: 700;
+}
+
+.strong-comment {
+  transform: translateX(100px);
+  margin-bottom: 20px;
+}
+
 
 .manko {
   display: flex;
@@ -355,7 +403,7 @@
   height: 38px;
   padding: 10px 20px;
   border-radius: 8px;
-  background-color: #FAFAFAFF;
+  background-color: #fafafaff;
   margin-left: 12px;
 }
 
@@ -364,7 +412,7 @@
   height: 38px;
   padding: 10px 20px;
   border-radius: 8px;
-  background-color: #FAFAFAFF;
+  background-color: #fafafaff;
   margin-left: 12px;
 }
 
@@ -391,9 +439,9 @@
   height: 38px;
   padding: 10px 20px;
   border-radius: 8px;
-  background-color: #FAFAFAFF;
+  background-color: #fafafaff;
   margin-left: 12px;
-  }
+}
 
 .province-form {
   display: flex;

@@ -1,14 +1,4 @@
-.react-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .react-modal-content {
   position: relative;
@@ -74,18 +64,7 @@
   outline: none;
 }
 
-.react-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other elements */
-}
+
 
 .modal-btn {
   width: 40px;
@@ -191,7 +170,7 @@
   border: 3px;
   color: rgba(107, 107, 107, 1);
   background-color: #fff;
-  transform: translateX(280px);
+  transform: translateX(380px);
   cursor: pointer;
   font-size: 30px;
 }
@@ -238,17 +217,7 @@ tbody tr:hover {
   transform: translateX(-70px);
 }
 
-.react-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .react-modal-content {
   position: relative;
@@ -314,18 +283,6 @@ tbody tr:hover {
   outline: none;
 }
 
-.react-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other elements */
-}
 
 .modal-btn {
   width: 40px;
@@ -454,16 +411,6 @@ tbody tr:hover {
   border-radius: 5px;
 }
 
-.close-button {
-  width: 24px;
-  height: 24px;
-  border: 3px;
-  color: rgba(107, 107, 107, 1);
-  background-color: #fff;
-  transform: translateX(280px);
-  cursor: pointer;
-  font-size: 30px;
-}
 table {
   width: 100%;
   border-collapse: collapse;
