@@ -77,7 +77,7 @@ function Monitoring() {
   
 
   const chartConfig = {
-    type: "line",
+    type: "bar", // Change the chart type to "bar" for a column chart
     width: "100%",
     height: 500,
     series: [
@@ -99,12 +99,11 @@ function Monitoring() {
         enabled: false,
       },
       colors: ["#25B679"],
-      stroke: {
-        lineCap: "round",
-        curve: "smooth",
-      },
-      markers: {
-        size: 0,
+      plotOptions: {
+        bar: {
+          columnWidth: "70%", // Adjust the column width as needed
+          endingShape: "rounded", // You can change this to "flat" if you prefer flat columns
+        },
       },
       xaxis: {
         categories: xData,
