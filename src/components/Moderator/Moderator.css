@@ -53,13 +53,10 @@
 }
 
 .wrapper-location {
+  width: 1000px;
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-.voydod {
-  display: flex;
 }
 
 .moderator-title {
@@ -77,6 +74,11 @@
   font-weight: 400;
   line-height: 22px;
   letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+
+.form-lord {
+  display: flex;
 }
 
 .location-word {
@@ -129,7 +131,7 @@
 }
 
 .product-item-checked {
-  width: 644px;
+  width: auto;
   height: 190px;
   display: flex;
   border: 1px solid #ddd;
@@ -148,13 +150,6 @@
 
 .go {
   display: flex;
-  margin-left: 1px;
-}
-
-.wrapper-location {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
 }
 
 .voydod {
@@ -163,7 +158,6 @@
 }
 
 .location-icon {
-  max-width: 100%;
   height: auto;
   transform: translateY(-36px);
   margin-right: 8px;
@@ -185,7 +179,7 @@
   font-weight: 400;
   line-height: 22px;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .kg {
@@ -279,8 +273,7 @@
 }
 
 .photoUrl-img {
-  display: flex;
-  margin: 0 auto;
+  margin-left: 20px;
   margin-bottom: 30px;
 }
 
@@ -293,9 +286,9 @@
 }
 
 .form-location {
-  width: 600px;
+  width: auto;
   display: flex;
-  margin: 0 auto;
+  margin: 0  auto;
 }
 
 .product-btn {
@@ -307,7 +300,16 @@
   background-color: #fff;
   cursor: pointer;
   font-size: 30px;
-  transform: translateX(750px);
+  transform: translateX(890px);
+}
+
+.contact-time {
+  width: 500px;
+  height: 38px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #fafafaff;
+  margin-left: 12px;
 }
 
 .moderator-btn {
@@ -340,9 +342,20 @@
   margin-left: 11px;
 }
 
+.strong-region {
+  transform: translateX(-60px)
+}
+
+.strong-address {
+  transform: translateX(-50px)
+}
+.strong-time {
+  transform: translateX(-120px)
+}
+
 /* Style for the delete modal */
 .react-modal-moderator {
-  width: 888px;
+  width: 974px;
   height: auto;
   outline: none;
   background-color: #fff;

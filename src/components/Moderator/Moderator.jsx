@@ -262,39 +262,48 @@ const Moderator = () => {
               </div>
               <div className="imgages">
                 <div className="form-lord">
-                  <img
-                    className="photoUrl-img"
-                    src={editingProduct?.imageList}
-                    alt=""
-                    width={96}
-                    height={96}
-                  />
+                  {editingProduct?.imageList.map((imageUrl, index) => (
+                    <img
+                      className="photoUrl-img"
+                      src={imageUrl}
+                      alt=""
+                      width={96}
+                      height={96}
+                      key={index}
+                    />
+                  ))}
                 </div>
               </div>
               <div className="strong-wrapper">
                 <strong className="strong-price">Narx (so’m)</strong>
                 <strong className="strong-weight">Miqdori (tonna) *</strong>
-              </div>      
+              </div>
               <div className="form-price">
                 <p className="contact-price">{editingProduct?.price} </p>
                 <p className="contact-weight">{editingProduct?.weight} </p>
               </div>
               <div className="strong-comment">
-
                 <strong>Izoh</strong>
               </div>
               <div className="contact-info">
                 <p className="comment-word">{editingProduct?.description}</p>
               </div>
               <div className="strong-wrapper">
-                <strong className="strong-price">Viloyat</strong>
-                <strong className="strong-tumann">Tuman</strong>
-                <strong className="strong-address">Qishloq / Mahalla nomi</strong>
-              </div>      
+                <strong className="strong-region">Viloyat</strong>
+                <strong className="strong-region">Tuman</strong>
+                <strong className="strong-address">
+                  Qishloq / Mahalla nomi
+                </strong>
+                <strong className="strong-time">
+                  Vaqti
+                </strong>
+              </div>
               <div className="form-location">
                 <p className="contact-price">{editingProduct?.region} </p>
                 <p className="contact-weight">{editingProduct?.district} </p>
                 <p className="contact-weight">{editingProduct?.address} </p>
+                <p className="contact-time">{editingProduct?.category.createdDate} </p>
+
               </div>
               <p className="contact-text">
                 Aloqa uchun qo’shimcha telefon raqam
@@ -337,10 +346,10 @@ const Moderator = () => {
         onRequestClose={closeModalProductList}
         contentLabel="Product List Modal"
       >
-         <div className="contianer">
+        <div className="contianer">
           <div className="modal-content">
             <div className="good">
-              <button className="product-btn" onClick={closeModal}>
+              <button className="product-btn" onClick={closeModalProductList}>
                 &#10006;
               </button>
               <div className="strong-wrapper">
@@ -356,39 +365,48 @@ const Moderator = () => {
               </div>
               <div className="imgages">
                 <div className="form-lord">
-                  <img
-                    className="photoUrl-img"
-                    src={editingProduct?.imageList}
-                    alt=""
-                    width={96}
-                    height={96}
-                  />
+                  {editingProduct?.imageList.map((imageUrl, index) => (
+                    <img
+                      className="photoUrl-img"
+                      src={imageUrl}
+                      alt=""
+                      width={96}
+                      height={96}
+                      key={index}
+                    />
+                  ))}
                 </div>
               </div>
               <div className="strong-wrapper">
                 <strong className="strong-price">Narx (so’m)</strong>
                 <strong className="strong-weight">Miqdori (tonna) *</strong>
-              </div>      
+              </div>
               <div className="form-price">
                 <p className="contact-price">{editingProduct?.price} </p>
                 <p className="contact-weight">{editingProduct?.weight} </p>
               </div>
               <div className="strong-comment">
-
                 <strong>Izoh</strong>
               </div>
               <div className="contact-info">
                 <p className="comment-word">{editingProduct?.description}</p>
               </div>
               <div className="strong-wrapper">
-                <strong className="strong-price">Viloyat</strong>
-                <strong className="strong-tumann">Tuman</strong>
-                <strong className="strong-address">Qishloq / Mahalla nomi</strong>
-              </div>      
+                <strong className="strong-region">Viloyat</strong>
+                <strong className="strong-region">Tuman</strong>
+                <strong className="strong-address">
+                  Qishloq / Mahalla nomi
+                </strong>
+                <strong className="strong-time">
+                  Vaqti
+                </strong>
+              </div>
               <div className="form-location">
                 <p className="contact-price">{editingProduct?.region} </p>
                 <p className="contact-weight">{editingProduct?.district} </p>
                 <p className="contact-weight">{editingProduct?.address} </p>
+                <p className="contact-time">{editingProduct?.category.createdDate} </p>
+
               </div>
               <p className="contact-text">
                 Aloqa uchun qo’shimcha telefon raqam
