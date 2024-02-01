@@ -3,7 +3,8 @@ import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import "./category.css";
-
+import Edit from "../../Assets/img/edit.png";
+import Trush_Icon from "../../Assets/img/Trush_Icon.png"
 const Category = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // Add state for edit modal
@@ -361,29 +362,35 @@ const Category = () => {
                   >
                     &#x22EE;
                   </button>
-
                   {showActions && activeIndex === index && (
-                    <div className="wrapper-buttons">
-                      <button
-                        className="button-delete"
-                        onClick={() => {
-                          handleDeleteClick(subCategory.id);
-                          setShowActions(false); // Close the options after editing
-                        }}
-                      >
-                        O’chirish
-                      </button>
-                      <button
-                        className="button-edit"
-                        onClick={() => {
-                          openEditModal(subCategory);
-                          setShowActions(false); // Close the options after editing
-                        }}
-                      >
-                        Edit
-                      </button>
-                    </div>
-                  )}
+                  <div className="addcategories-buttons">
+                    <button
+                      className="addcategories-delete"
+                      onClick={() => {
+                        handleDeleteClick(subCategory.id);
+                        setShowActions(false); // Close the options after deleting
+                      }}
+                    >
+                      <img
+                        src={Trush_Icon}
+                        alt="Trush Icon"
+                        width={20}
+                        height={20}
+                      />
+                      o'chirish
+                    </button>
+                    <button
+                      className="addcategories-edit"
+                      onClick={() => {
+                        openEditModal(subCategory);
+                        setShowActions(false); // Close the options after editing
+                      }}
+                    >
+                      <img src={Edit} alt="Edit" width={25} height={25} />
+                      Tahrirlash
+                    </button>
+                  </div>
+                )}
                 </td>
               </tr>
             ))}
