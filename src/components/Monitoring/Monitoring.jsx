@@ -157,13 +157,13 @@ function Monitoring() {
             value={selectedOption}
           >
             <option className="option" value="DAILY">
-              Day
+              Kunlik
             </option>
             <option className="option" value="MONTHLY">
-              Month
+              Oylik
             </option>
             <option className="option" value="YEARLY">
-              Year
+              Yilik
             </option>
           </select>
           <input
