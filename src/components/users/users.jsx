@@ -4,11 +4,12 @@ import Nav from "../Nav/Nav";
 
 const Users = () => {
   const [usersData, setUsersData] = useState([]);
+  const [showButtons, setShowButtons] = useState(null);
 
   const fetchDataUsers = async () => {
     const storedToken = localStorage.getItem("authToken");
     const response = await fetch("https://avtowatt.uz/api/v1/users/all", {
-      method: "GET", // GET method
+      method: "GET",
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
@@ -17,9 +18,13 @@ const Users = () => {
     const data = await response.json();
     setUsersData(data);
   };
-  useEffect(() => {
-    fetchDataUsers();
-  }, []);
+
+  const handleThreeDotClick = (userId) => {
+    setShowButtons((prevShowButtons) =>
+      prevShowButtons === userId ? null : userId
+    );
+  };
+
   return (
     <div className="container">
       <Nav />
@@ -32,6 +37,7 @@ const Users = () => {
             <th>Ism</th>
             <th>Familiya</th>
             <th>Telefon</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +50,23 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.surname}</td>
               <td>{user.phone}</td>
+              <td>
+                <div className="three-dot-container">
+                  <button
+                    className="three-dot"
+                    onClick={() => handleThreeDotClick(user.id)}
+                  >
+                    &#8942;
+                  </button>
+                  {showButtons === user.id && (
+                    <div className="buttons-container">
+                      <button className="admin-delete">Block</button>
+                      {/* Add similar logic for unblocking */}
+                      <button className="admin-delete">Unblock</button>
+                    </div>
+                  )}
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
