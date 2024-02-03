@@ -19,6 +19,8 @@ const Users = () => {
     setUsersData(data);
   };
 
+  fetchDataUsers()
+
   const handleThreeDotClick = (userId) => {
     setShowButtons((prevShowButtons) =>
       prevShowButtons === userId ? null : userId
