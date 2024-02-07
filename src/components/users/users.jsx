@@ -6,6 +6,10 @@ const Users = () => {
   const [usersData, setUsersData] = useState([]);
   const [showButtons, setShowButtons] = useState(null);
 
+  useEffect(() => {
+    fetchDataUsers();
+  }, []);
+
   const fetchDataUsers = async () => {
     const storedToken = localStorage.getItem("authToken");
     const response = await fetch("https://avtowatt.uz/api/v1/users/all", {
@@ -19,12 +23,39 @@ const Users = () => {
     setUsersData(data);
   };
 
-  fetchDataUsers()
-
   const handleThreeDotClick = (userId) => {
     setShowButtons((prevShowButtons) =>
       prevShowButtons === userId ? null : userId
     );
+  };
+
+  const blockUser = async (userId) => {
+    const storedToken = localStorage.getItem("authToken");
+    const response =  await fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ block: true }), // Assuming blocked is the field to toggle
+    });
+    // After blocking, you may want to refresh the user data
+    fetchDataUsers();
+  };
+
+  const unblockUser = async (userId) => {
+    const storedToken = localStorage.getItem("authToken");
+    await fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ block: false }), // Assuming blocked is the field to toggle
+    });
+
+    // After unblocking, you may want to refresh the user data
+    fetchDataUsers();
   };
 
   return (
@@ -62,9 +93,8 @@ const Users = () => {
                   </button>
                   {showButtons === user.id && (
                     <div className="buttons-container">
-                      <button className="admin-delete">Block</button>
-                      {/* Add similar logic for unblocking */}
-                      <button className="admin-delete">Unblock</button>
+                      <button className="admin-delete" onClick={() => blockUser(user.id)}>Block</button>
+                      <button className="admin-delete" onClick={() => unblockUser(user.id)}>Unblock</button>
                     </div>
                   )}
                 </div>
