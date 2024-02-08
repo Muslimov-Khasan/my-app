@@ -380,7 +380,7 @@ const AddCategory = () => {
               <td>
                 <img
                   src={addcategory.photoUrl}
-                  alt=""
+                  alt="Description"
                   style={{ width: "50px", height: "50px" }}
                 />
               </td>
@@ -499,7 +499,7 @@ const AddCategory = () => {
                   style={{ display: "none" }}
                 />
                 <button className="btn-file" onClick={handleUploadClick}>
-                  <img className="shablon" src={Shablon} alt="" width={365} />
+                  <img className="shablon" src={Shablon} alt="Description" width={365} />
                 </button>
               </label>
               <button className="save-btn" type="submit">
@@ -552,13 +552,13 @@ const AddCategory = () => {
                 style={{ display: "none" }}
               />
               <button className="btn-file" onClick={handleFileChangeEdit}>
-                <img  src={Shablon} alt="" width={365} />
+                <img  src={Shablon}alt="Description" width={365} />
               </button>
 
               <img
                 className="edit-img"
                 src={editCategoryData.photoUrl}
-                alt=""
+                alt="Description" 
                 style={{ width: "50px", height: "50px" }}
               />
 

@@ -200,7 +200,7 @@ const Banner = () => {
               <h3 className="banner-title">Rasm Yuklash</h3>
               
               <button className="btn-button-file" onClick={handleUploadClick}>
-                <img className="Shablon" src={Shablon} alt="" width={465} />
+                <img className="Shablon" src={Shablon} alt="Shablon" width={465} />
               </button>
               {file && (
                 <img

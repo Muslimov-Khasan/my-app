@@ -266,7 +266,7 @@ const Moderator = () => {
                     <img
                       className="photoUrl-img"
                       src={imageUrl}
-                      alt=""
+                      alt="Description" 
                       width={96}
                       height={96}
                       key={index}
@@ -369,7 +369,7 @@ const Moderator = () => {
                     <img
                       className="photoUrl-img"
                       src={imageUrl}
-                      alt=""
+                      alt="Description"                
                       width={96}
                       height={96}
                       key={index}
