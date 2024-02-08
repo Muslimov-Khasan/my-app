@@ -98,13 +98,13 @@ const Users = () => {
                     <div className="buttons-container">
                       <button
                         className="admin-delete"
-                        // onClick={() => blockUser(user.id)}
+                        onClick={() => blockUser(user.id)}
                       >
                         Block
                       </button>
                       <button
                         className="admin-delete"
-                        // onClick={() => unblockUser(user.id)}
+                        onClick={() => unblockUser(user.id)}
                       >
                         Unblock
                       </button>
