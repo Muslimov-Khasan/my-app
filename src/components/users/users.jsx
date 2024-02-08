@@ -31,7 +31,7 @@ const Users = () => {
 
   const blockUser = async (userId) => {
     const storedToken = localStorage.getItem("authToken");
-    const response =  await fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
+    await fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${storedToken}`,
@@ -45,15 +45,18 @@ const Users = () => {
 
   const unblockUser = async (userId) => {
     const storedToken = localStorage.getItem("authToken");
-    await fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${storedToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ block: false }), // Assuming blocked is the field to toggle
-    });
-
+    const response = await fetch(
+      `https://avtowatt.uz/api/v1/users/block/${userId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ block: false }), // Assuming blocked is the field to toggle
+      }
+    );
+    console.log(response);
     // After unblocking, you may want to refresh the user data
     fetchDataUsers();
   };
@@ -93,8 +96,18 @@ const Users = () => {
                   </button>
                   {showButtons === user.id && (
                     <div className="buttons-container">
-                      <button className="admin-delete" onClick={() => blockUser(user.id)}>Block</button>
-                      <button className="admin-delete" onClick={() => unblockUser(user.id)}>Unblock</button>
+                      <button
+                        className="admin-delete"
+                        // onClick={() => blockUser(user.id)}
+                      >
+                        Block
+                      </button>
+                      <button
+                        className="admin-delete"
+                        // onClick={() => unblockUser(user.id)}
+                      >
+                        Unblock
+                      </button>
                     </div>
                   )}
                 </div>
