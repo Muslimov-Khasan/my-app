@@ -56,7 +56,6 @@ const Users = () => {
         body: JSON.stringify({ block: false }), // Assuming blocked is the field to toggle
       }
     );
-    console.log(response);
     // After unblocking, you may want to refresh the user data
     fetchDataUsers();
   };
