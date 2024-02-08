@@ -87,25 +87,19 @@ const News = () => {
         messageL,
       }),
     });
-  
-    const responseData = await response.json();
-  
+
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const responseData = await response.json();
+      setNewsItems((prevNewsItems) => [...prevNewsItems, responseData]);
+    }
     setnewsaddData({
       titleK: "",
       titleL: "",
       messageK: "",
       messageL: "",
-    });
-    setNewsItems((prevNewsItems) => [...prevNewsItems, responseData]);
-  
-    // Clear the input fields
-    setnewsaddData({
-      titleK: "",
-      titleL: "",
-      messageK: "",
-      messageL: "",
-    });
-  
+    }); 
+    fetchDataNews();
     closeModal();
   };
 
@@ -146,7 +140,7 @@ const News = () => {
       ...prevData,
       [name]: value,
     }));
-  };
+  };  
   useEffect(() => {
     fetchDataNews();
   }, []);

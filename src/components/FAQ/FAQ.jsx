@@ -19,10 +19,10 @@ const FAQ = () => {
 
   const handleFormSubmitFaq = async (event) => {
     event.preventDefault();
-
+  
     const storedToken = localStorage.getItem("authToken");
     const { questionL, questionK, answerL, answerK } = faqData;
-
+  
     // Check if any input length is 0
     if (
       questionL.length === 0 ||
@@ -33,6 +33,7 @@ const FAQ = () => {
       setFormError("Barcha malumotlarni to'ldirish shart ?!.");
       return;
     }
+  
     const response = await fetch("https://avtowatt.uz/api/v1/faq", {
       method: "POST",
       headers: {
@@ -46,12 +47,20 @@ const FAQ = () => {
         answerK,
       }),
     });
-    const responseData = await response.json();
-    setFaqItems((prevFaqItems) => [...prevFaqItems, responseData]);
+  
+  
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const responseData = await response.json();
+      setFaqItems((prevFaqItems) => [...prevFaqItems, responseData]);
+    } 
+  
+    // Fetch updated FAQ data and clear form/error
     fetchDataFaq();
     setFormError("");
     closeModal();
   };
+  
 
   const fetchDataFaq = async () => {
     const storedToken = localStorage.getItem("authToken");

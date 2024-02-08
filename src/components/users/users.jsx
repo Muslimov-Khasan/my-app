@@ -5,6 +5,7 @@ import Nav from "../Nav/Nav";
 const Users = () => {
   const [usersData, setUsersData] = useState([]);
   const [showButtons, setShowButtons] = useState(null);
+  const [blockedUsers, setBlockedUsers] = useState([]);
 
   useEffect(() => {
     fetchDataUsers();
@@ -37,27 +38,37 @@ const Users = () => {
         Authorization: `Bearer ${storedToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ block: true }), // Assuming blocked is the field to toggle
+      body: JSON.stringify({ block: true }),
     });
-    // After blocking, you may want to refresh the user data
+    // After blocking, update the blocked users list
+    setBlockedUsers((prevBlockedUsers) => [...prevBlockedUsers, userId]);
+    localStorage.setItem(`blockedUser_${userId}`, true);
+
+    // Refresh the user data
     fetchDataUsers();
+    handleThreeDotClick(null);
   };
 
   const unblockUser = async (userId) => {
     const storedToken = localStorage.getItem("authToken");
-    const response = await fetch(
-      `https://avtowatt.uz/api/v1/users/block/${userId}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ block: false }), // Assuming blocked is the field to toggle
-      }
+    fetch(`https://avtowatt.uz/api/v1/users/block/${userId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ block: false }),
+    });
+
+    // After unblocking, update the blocked users list
+    setBlockedUsers((prevBlockedUsers) =>
+      prevBlockedUsers.filter((blockedUserId) => blockedUserId !== userId)
     );
-    // After unblocking, you may want to refresh the user data
+    localStorage.removeItem(`blockedUser_${userId}`);
+
+    // Refresh the user data
     fetchDataUsers();
+    handleThreeDotClick(null);
   };
 
   return (
@@ -77,7 +88,14 @@ const Users = () => {
         </thead>
         <tbody>
           {usersData.map((user, index) => (
-            <tr key={index}>
+            <tr
+              key={index}
+              style={{
+                backgroundColor: localStorage.getItem(`blockedUser_${user.id}`)
+                  ? "#FFE1E1"
+                  : "#fff",
+              }}
+            >
               <td>{index + 1}</td>
               <td>
                 <img src={user.photoUrl} alt="user" width={55} />
@@ -99,13 +117,13 @@ const Users = () => {
                         className="admin-delete"
                         onClick={() => blockUser(user.id)}
                       >
-                        Block
+                        Bloklash
                       </button>
                       <button
                         className="admin-delete"
                         onClick={() => unblockUser(user.id)}
                       >
-                        Unblock
+                        Blokdan chiqarish
                       </button>
                     </div>
                   )}
