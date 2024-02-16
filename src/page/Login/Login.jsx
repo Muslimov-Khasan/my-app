@@ -17,81 +17,7 @@ const Login = () => {
     event.preventDefault();
   };
 
-  useEffect(() => {
-    const checkTokenExpiration = () => {
-      const storedToken = localStorage.getItem("authToken");
-      if (storedToken) {
-        const decodedToken = decodeToken(storedToken);
-
-        // Check if the token is expired
-        if (decodedToken.exp * 1000 < Date.now()) {
-          // Token expired, navigate to login page
-          localStorage.removeItem("authToken");
-          setToken(null);
-          navigate("/");
-        } else {
-          // Token still valid, check for the role
-          if (
-            decodedToken.role &&
-            decodedToken.role.includes("ROLE_MODERATOR")
-          ) {
-            navigate("/Moderator");
-          } else if (
-            decodedToken.role &&
-            decodedToken.role.includes("ROLE_ADMIN")
-          ) {
-            navigate("/Monitoring");
-          } else {
-            // Handle other roles or scenarios
-            navigate("/");
-          }
-          // Set the token in the state
-          setToken(storedToken);
-        }
-      }
-    };
-
-    const decodeToken = (token) => {
-      try {
-        return JSON.parse(atob(token.split(".")[1]));
-      } catch (error) {
-        return {};
-      }
-    };
-
-    checkTokenExpiration();
-  }, [navigate, setToken]);
-
-  useEffect(() => {
-    const logoutAfterSevenDays = () => {
-      const storedToken = localStorage.getItem("authToken");
-      if (storedToken) {
-        const decodedToken = decodeToken(storedToken);
-        const expirationTime = decodedToken.exp * 1000;
-
-        localStorage.setItem("tokenExpirationTime", expirationTime);
-
-        const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000;
-
-        if (expirationTime - Date.now() <= sevenDaysInMilliseconds) {
-          localStorage.removeItem("authToken");
-          localStorage.removeItem("tokenExpirationTime");
-          setToken(null);
-          navigate("/");
-        }
-      }
-    };
-
-    const decodeToken = (token) => {
-      try {
-        return JSON.parse(atob(token.split(".")[1]));
-      } catch (error) {
-        return {};
-      }
-    };
-
-    logoutAfterSevenDays();
-  }, [navigate]);
+ 
 
   const handleLogin = async () => {
     try {
@@ -162,13 +88,11 @@ const Login = () => {
 
   return (
     <div>
-      
       <div className="wrapper-login">
-        <img src={loginImage} alt="image" width={500} height={500} />
         <form className="form-login" onSubmit={handleFormSubmitLogin}>
-          <h2 className="useer-msg">Tizimga kirish</h2>
+          <h2 className="user-msg">Tizimga kirish</h2>
           <p className="login-info">
-            Boshqaruv panelimizga kirish uchun elektron pochta va parolingizni
+            Boshqaruv paneliga kirish uchun telefon raqamingiz va parolni
             kiriting
           </p>
           {error && <p style={{ color: "red" }}>{error}</p>}
@@ -183,7 +107,6 @@ const Login = () => {
               }
             />
           </label>
-          <br />
           <label className="label-phone">
             Parol:
             <input
@@ -199,11 +122,11 @@ const Login = () => {
               }
             />
           </label>
-          <br />
           <button className="login-btn" onClick={handleLogin}>
             Tizimga kirish
           </button>
         </form>
+        <img className="image" src={loginImage} alt="image"  />
       </div>
     </div>
   );

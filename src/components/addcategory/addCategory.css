@@ -1,13 +1,12 @@
 .addcategoriya-btn {
-  width: 40px;
+  width: auto;
   height: 40px;
-  padding: 13px;
   border-radius: 8px;
-  border: none;
-  color: #fff;
   cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
-  transform: translateX(1030px);
+  font-size: 14px;
+  transform: translateY(-27px) translateX(888px);
+  background-color: #fff;
+  border: 1px solid #d0d5dd;
 }
 
 .addcategories-buttons {
@@ -50,10 +49,6 @@
   margin-bottom: 10px;
 }
 
-.btn-file {
-  margin: 0 auto;
-}
-
 .modal-body-editd form input[type="text"] {
   border-radius: 4px;
   width: 300px;
@@ -65,11 +60,12 @@
 
 .addcategories-edit {
   width: auto;
-  height: 45px; 
+  height: 45px;
   border: none;
   cursor: pointer;
   background-color: transparent;
   margin: 0 auto;
+  font-size: 17px;
 }
 
 .addcategories-delete {
@@ -80,6 +76,11 @@
   text-align: center;
   cursor: pointer;
   margin: 0 auto;
+  font-size: 17px;
+}
+
+.picture {
+  transform: translateY(4px) translateX(-10px);
 }
 
 .save-btn {
@@ -95,20 +96,7 @@
   color: #fff;
   border-radius: 12px;
   margin-bottom: 11px;
-  background-color: rgba(37, 182, 121, 1);
-}
-
-.newClass {
-  color: #25b679;
-  text-decoration: underline;
-}
-
-.key-word {
-  display: flex;
-}
-
-.po {
-  transform: translateX(20px);
+  background-color: rgba(21, 112, 239, 1);
 }
 
 .edit-img {
@@ -157,11 +145,11 @@
 }
 
 input:checked + .slider {
-  background-color: rgba(37, 182, 121, 1);
+  background-color: rgba(83, 177, 253, 1);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgba(37, 182, 121, 1);
+  box-shadow: 0 0 1px rgba(83, 177, 253, 1);
 }
 
 input:checked + .slider:before {
@@ -211,44 +199,68 @@ input:checked + .slider + .toggle-message {
   font-size: 30px;
   transform: translateX(495px);
 }
-@media only screen and (max-width: 1025px) {
-  /* Your responsive styles here */
 
-  .addcategoriya-btn {
-    transform: translateX(660px);
-  }
+.btn-file-edit {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 11px;
+  transform: translateX(80px);
+}
 
-  .modal-body form label {
-    margin-left: 50px;
-  }
+.add-catgory-table {
+  width: 100%;
+  border-collapse: collapse;
+  transform: translateX(-150px);
+  margin-top: 80px;
+  cursor: pointer;
+}
 
-  .modal-body-editd form label {
-    transform: translateX(0);
-  }
+th,
+td {
+  color: rgba(71, 84, 103, 1);
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 
-  .shablon {
-    transform: translateX(0);
-  }
+th {
+  color: rgba(71, 84, 103, 1);
+}
 
-  .save-btn {
-    width: 100%; /* Make the button full-width */
-  }
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
 
-  .newClass {
-    color: #25b679;
-    text-decoration: none; /* Remove underline on small screens */
-  }
+.delete-title {
+  transform: translateY(-65px);
+  text-align: center;
+}
+.delete-word {
+  transform: translateY(-65px);
+  text-align: center;
+  color: rgba(71, 84, 103, 1);
+  font-size: 18px;
+  font-weight: 400;
+}
 
-  .po {
-    transform: translateX(0);
-  }
+.delete-close-btn {
+  width: 24px;
+  height: 24px;
+  border: 3px;
+  color: rgba(107, 107, 107, 1);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  transform: translateX(500px) translateY(-30px);
+}
 
-  .edit-img {
-    transform: translateX(0);
-  }
-
-  .add-btn,
-  .category-close-btn {
-    transform: translateX(0);
-  }
+.delete-modal-buttons {
+  margin: 0 auto;
+  transform: translateX(60px);
 }

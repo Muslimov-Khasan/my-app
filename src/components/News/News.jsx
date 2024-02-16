@@ -16,6 +16,8 @@ const News = () => {
     messageK: "",
     messageL: "",
   });
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedNewsItem, setSelectedNewsItem] = useState(null);
 
   function convertUzbekLatinToCyrillic(uzbekLatinWord) {
     const uzbekLatinToCyrillicMapping = {
@@ -71,9 +73,9 @@ const News = () => {
       setFormError("Barcha malumotlarni to'ldirish shart ?!.");
       return;
     }
-  
+
     const storedToken = localStorage.getItem("authToken");
-  
+
     const response = await fetch("https://avtowatt.uz/api/v1/news", {
       method: "POST",
       headers: {
@@ -98,25 +100,30 @@ const News = () => {
       titleL: "",
       messageK: "",
       messageL: "",
-    }); 
+    });
     fetchDataNews();
     closeModal();
   };
 
   const fetchDataNews = async () => {
     const storedToken = localStorage.getItem("authToken");
-    const response = await fetch("https://avtowatt.uz/api/v1/news/all", {
-      method: "GET", // GET method
-      headers: {
-        Authorization: `Bearer ${storedToken}`,
-      },
-    });
+    try {
+      const response = await fetch("https://avtowatt.uz/api/v1/news/all", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      });
 
-    if (!response.ok) {
-      return;
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+      const data = await response.json();
+      setNewsItems(data);
+      setFormError(""); // Clear any previous error messages
+    } catch (error) {
+      setFormError("Error fetching news data. Please try again later.");
     }
-    const data = await response.json();
-    setNewsItems(data);
   };
 
   const handleInputChange = (name, value) => {
@@ -140,7 +147,7 @@ const News = () => {
       ...prevData,
       [name]: value,
     }));
-  };  
+  };
   useEffect(() => {
     fetchDataNews();
   }, []);
@@ -177,18 +184,66 @@ const News = () => {
       prevShowActions === index ? null : index
     );
   };
+
+  const openDeleteModal = (newsItem) => {
+    setSelectedNewsItem(newsItem);
+    setIsDeleteModalOpen(true);
+    handleActionsClick(null);
+  };
+  const closeDeleteModal = () => {
+    setSelectedNewsItem(null);
+    setIsDeleteModalOpen(false);
+  };
+
   Modal.setAppElement("#root"); // Assuming your root element has the id "root"
 
   return (
-    <div className="container">
-      <Nav />
-      <div className="box">
-        <h1 className="news-title">Yangilik nomi</h1>
-        <button className="modal-btn" onClick={openModal}>
-          +
-        </button>
+    <>
+      <div className="container">
+        <div className="admin-wrapper">
+          <Nav />
+          <div className="news-box">
+            <h1 className="news-title">Yangiliklar</h1>
+            <button className="news-modal-btn" onClick={openModal}>
+              ➕ Qo’shish
+            </button>
+          </div>
+          {newsItems.length === 0 && (
+            <p className="loading-text">Yuklanmoqda...</p>
+          )}
+
+          <ul className="news-list">
+            {newsItems.map((newsItem) => (
+              <li className="news-item" key={newsItem.id}>
+                <button
+                  className="news-btn"
+                  onClick={() => handleActionsClick(newsItem.id)}
+                >
+                  &#x22EE;
+                </button>
+                {showActions === newsItem.id && (
+                  <div key={`actions-${newsItem.id}`}>
+                    <button
+                      className="new-delete"
+                      onClick={() => openDeleteModal(newsItem)}
+                    >
+                      <img
+                        src={Trush_Icon}
+                        alt="Trush"
+                        width={25}
+                        height={25}
+                      />{" "}
+                      O'chirish
+                    </button>
+                  </div>
+                )}
+                <h2 className="new-title">{newsItem.title}</h2>
+                <p className="news-content">{newsItem.message}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      {newsItems.length === 0 && <p className="loading-text">Yuklanmoqda...</p>}
 
       <Modal
         isOpen={isModalOpen}
@@ -264,33 +319,29 @@ const News = () => {
           </form>
         </div>
       </Modal>
-
-      <ul className="news-list">
-        {newsItems.map((newsItem) => (
-          <li className="news-item" key={newsItem.id}>
-            <button
-              className="news-btn"
-              onClick={() => handleActionsClick(newsItem.id)}
-            >
-              &#x22EE;
-            </button>
-            {showActions === newsItem.id && (
-              <div key={`actions-${newsItem.id}`}>
-                <button
-                  className="new-delete"
-                  onClick={() => handleDeleteClick(newsItem.id)}
-                >
-                  <img src={Trush_Icon} alt="Trush" width={25} height={25} />{" "}
-                  O'chirish
-                </button>
-              </div>
-            )}
-            <h2 className="new-title">{newsItem.title}</h2>
-            <p className="news-content">{newsItem.message}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Modal
+        isOpen={isDeleteModalOpen}
+        className="react-modal-content"
+        overlayClassName="react-modal-overlay"
+        onRequestClose={closeDeleteModal}
+      >
+        <div>
+          <button className="news-close-btn" onClick={closeDeleteModal}>
+            &#10006;
+          </button>
+          <h2 className="modal-delete-title">Haqiqatan ham oʻchirib tashlamoqchimisiz</h2>
+          <button
+            className="category-delete-modal"
+            onClick={() => handleDeleteClick(selectedNewsItem.id)}
+          >
+            Xa
+          </button>
+          <button className="cancel-modal" onClick={closeDeleteModal}>
+            Yo'q
+          </button>
+        </div>
+      </Modal>
+    </>
   );
 };
 

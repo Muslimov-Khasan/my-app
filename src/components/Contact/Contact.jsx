@@ -3,7 +3,7 @@ import { v4 } from "uuid";
 import { imageDb } from "../firebase/firebase";
 import { Link } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import Shablon from "../../Assets/img/shablon.png";
+import Shablon from "../../Assets/img/shablon.svg";
 import Modal from "react-modal";
 import Nav from "../Nav/Nav";
 import "./Contact.css";
@@ -13,6 +13,8 @@ const Contact = () => {
   const [img, setImg] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState(""); // Add this line
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedContactItem, setSelectedContactItem] = useState(null);
 
   const [imgaeData, setImageData] = useState({
     name: "",
@@ -90,8 +92,7 @@ const Contact = () => {
         url: imgaeData.url,
       }),
     });
-    const data = await response.json();
-    console.log(data);
+    await response.json();
     setImageData({ ...imgaeData, imageUrl: icon }); // Update imageUrl
     fetchData();
     closeModal();
@@ -117,7 +118,6 @@ const Contact = () => {
         // If deletion is successful, update the fetched data state
         const updatedData = fetchedData.filter((item) => item.id !== itemId);
         setFetchedData(updatedData);
-        console.log("Item deleted successfully.");
       } else {
         console.error("Error deleting item:", response.statusText);
       }
@@ -147,78 +147,89 @@ const Contact = () => {
     }
   };
 
+  const openDeleteModal = (contactItem) => {
+    setSelectedContactItem(contactItem);
+    setIsDeleteModalOpen(true);
+    threePointButton(null);
+  };
+
+  const closeDeleteModal = () => {
+    setSelectedContactItem(null);
+    setIsDeleteModalOpen(false);
+  };
+
   Modal.setAppElement("#root"); // Assuming your root element has the id "root"
 
   return (
     <>
       <div className="container">
-        <Nav />
-        <div className="contact-boxes">
-          <button className="banner-btn" onClick={openModal}>
-            +
-          </button>
-        </div>
+        <div className="admin-wrapper">
+          <Nav />
+          <div className="contact-boxes">
+            <button className="contact-btn" onClick={openModal}>
+              +
+            </button>
+          </div>
 
-        <div className="contact-wrapper">
-          <div className="contact-inner">
-            {fetchedData.length === 0 && (
-              <p className="loading-text">Yuklanmoqda...</p>
-            )}
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Rasm</th>
-                  <th>Nomi</th>
-                  <th>Link</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {fetchedData.map((addcategory, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img
-                        src={addcategory.icon}
-                        alt=""
-                        style={{ width: "50px", height: "50px" }}
-                      />
-                    </td>
-                    <td>{addcategory.name}</td>
-                    <td>
-                      <Link
-                        className="url-link"
-                        to={addcategory.url}
-                        target={"_blank"}
-                      >
-                        {addcategory.url}
-                      </Link>
-                    </td>
-                    <td>
-                      <button
-                        className="categories-btn"
-                        onClick={() => threePointButton(index)} // Pass the index to your function
-                      >
-                        &#x22EE;
-                      </button>
-                      {showActions && activeIndex === index && (
-                        <div className="contact-buttons">
-                          <button
-                            className="contact-delete"
-                            onClick={() =>
-                              handleDeleteButtonClick(addcategory.id)
-                            }
-                          >
-                            o'chirish
-                          </button>
-                        </div>
-                      )}
-                    </td>
+          <div className="contact-wrapper">
+            <div className="contact-inner">
+              {fetchedData.length === 0 && (
+                <p className="loading-text">Yuklanmoqda...</p>
+              )}
+              <table className="contact-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Rasm</th>
+                    <th>Nomi</th>
+                    <th>Link</th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {fetchedData.map((addcategory, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <img
+                          src={addcategory.icon}
+                          alt=""
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                      </td>
+                      <td>{addcategory.name}</td>
+                      <td>
+                        <Link
+                          className="url-link"
+                          to={addcategory.url}
+                          target={"_blank"}
+                        >
+                          {addcategory.url}
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          className="categories-btn"
+                          onClick={() => threePointButton(index)} // Pass the index to your function
+                        >
+                          &#x22EE;
+                        </button>
+                        {showActions && activeIndex === index && (
+                          <div className="contact-buttons">
+                            <button
+                              className="contact-delete"
+                              onClick={() => openDeleteModal(addcategory)}
+                            >
+                              o'chirish
+                            </button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -280,6 +291,31 @@ const Contact = () => {
               </button>
             </div>
           </div>
+        </div>
+      </Modal>
+      <Modal
+        isOpen={isDeleteModalOpen}
+        className="react-modal-content"
+        overlayClassName="react-modal-overlay"
+        onRequestClose={closeDeleteModal}
+      >
+        <div>
+          <button className="contact-close" onClick={closeModal}>
+            &#10006;
+          </button>
+          <h3 className="title-modal">
+            Haqiqatan ham oʻchirib tashlamoqchimisiz{" "}
+            {selectedContactItem && selectedContactItem.name}?
+          </h3>
+          <button
+            className="category-delete-modal"
+            onClick={() => handleDeleteButtonClick(selectedContactItem.id)}
+          >
+            Xa
+          </button>
+          <button className="category-cancel-modal" onClick={closeDeleteModal}>
+            Yo'q
+          </button>
         </div>
       </Modal>
     </>

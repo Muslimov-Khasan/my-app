@@ -82,7 +82,7 @@ function Monitoring() {
     height: 500,
     series: [
       {
-        name: "Sales",
+        name: "qo'shilgan mahsulot soni",
         data: yData,
       },
     ],
@@ -98,7 +98,7 @@ function Monitoring() {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#25B679"],
+      colors: ["rgba(21, 112, 239, 1)"],
       plotOptions: {
         bar: {
           columnWidth: "70%", // Adjust the column width as needed
@@ -144,13 +144,15 @@ function Monitoring() {
   return (
     <>
       <div className="container">
+        <div className="admin-wrapper">
+
         <Nav />
 
         <div className="drmamma-wrapper">
-          <div className="text-wrapper">
+          {/* <div className="text-wrapper">
             <h2 className="drmamma-title">Monitoring</h2>
             <p className="drmamma-title">E’lonlar</p>
-          </div>
+          </div> */}
           <select
             className="day-select"
             onChange={handleSelectChange}
@@ -181,6 +183,7 @@ function Monitoring() {
           </CardBody>
         </Card>
       </div>
+        </div>
       </div>
     </>
   );

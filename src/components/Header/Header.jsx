@@ -4,13 +4,15 @@ import "./Header.css";
 import Nav from "../Nav/Nav";
 import Edit from "../../Assets/img/edit.png";
 import Trush_Icon from "../../Assets/img/Trush_Icon.png";
+import addIcon from "../../Assets/img/addIcon.svg";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [adminData, setAdminData] = useState([]);
   const [showButtons, setShowButtons] = useState(null);
   const [error, setError] = useState(null);
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [adminToDelete, setAdminToDelete] = useState(null);
   const [newAdmin, setNewAdmin] = useState({
     fullName: "",
     phone: "",
@@ -32,19 +34,16 @@ const Header = () => {
   }, []);
 
   const fetchDataAll = async () => {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        "https://avtowatt.uz/api/v1/admin/all",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      setAdminData(data);
+    const storedToken = localStorage.getItem("authToken");
+    const response = await fetch("https://avtowatt.uz/api/v1/admin/all", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setAdminData(data);
   };
 
   const handleFormSubmit = async (event) => {
@@ -52,17 +51,14 @@ const Header = () => {
 
     try {
       const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        `https://avtowatt.uz/api/v1/admin/create`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${storedToken}`,
-          },
-          body: JSON.stringify(newAdmin),
-        }
-      );
+      const response = await fetch(`https://avtowatt.uz/api/v1/admin/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`,
+        },
+        body: JSON.stringify(newAdmin),
+      });
 
       if (response.ok) {
         const responseData = await response.json();
@@ -74,9 +70,6 @@ const Header = () => {
         });
         closeModal();
         fetchDataAll();
-      } else {
-        // Handle non-successful response
-        console.error("Error creating admin:", response.statusText);
       }
     } catch (error) {
       // Handle fetch error
@@ -88,27 +81,45 @@ const Header = () => {
       prevShowButtons === adminId ? null : adminId
     );
   };
+  const handleDeleteConfirmation = (adminId) => {
+    setAdminToDelete(adminId);
+    setIsDeleteModalOpen(true);
+    setShowButtons(null); // Close the three-dot container
 
-  const handleDelete = async () => {
-    const storedToken = localStorage.getItem("authToken");
-    const response = await fetch(
-      `https://avtowatt.uz/api/v1/admin/${showButtons}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-  
-      setAdminData((prevAdminData) =>
-        prevAdminData.filter((admin) => admin.id !== showButtons)
+  };
+
+  // Function to handle the deletion of the admin
+  const handleDeleteConfirmed = async () => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+      const response = await fetch(
+        `https://avtowatt.uz/api/v1/admin/${adminToDelete}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
-  
-    setShowButtons(null);
+
+      if (response.ok) {
+        setAdminData((prevAdminData) =>
+          prevAdminData.filter((admin) => admin.id !== adminToDelete)
+        );
+        setIsDeleteModalOpen(false);
+      } else {
+        console.error("Error deleting admin:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting admin:", error);
+    }
   };
   
+  const handleDeleteCancelled = () => {
+    setAdminToDelete(null);
+    setIsDeleteModalOpen(false);
+  };
   const handleModify = async () => {
     setIsEditModalOpen(true);
     if (showButtons === null) {
@@ -132,24 +143,21 @@ const Header = () => {
     } catch (error) {
       console.error("Error fetching admin details:", error);
     }
-  };  
+  };
 
   const handleEditFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        `https://avtowatt.uz/api/v1/admin/update`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(modifiedAdmin),
-        }
-      );
+      const response = await fetch(`https://avtowatt.uz/api/v1/admin/update`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(modifiedAdmin),
+      });
 
       if (response.ok) {
         setAdminData((prevAdminData) =>
@@ -198,17 +206,81 @@ const Header = () => {
     <>
       <header className="header">
         <div className="container">
-          <Nav />
-          <div className="box">
-            <h1 className="header-title">Admin qo’shish</h1>
-            <button className="modal-btn" onClick={openModal}>
-              +
-            </button>
+          <div className="admin-wrapper">
+            <Nav />
+            <div className="just">
+              <h1 className="header-title">Admin</h1>
+              <button className="modal-btn" onClick={openModal}>
+                <img src={addIcon} alt="addIcon" />
+                Admin qo’shish
+              </button>
+            </div>
+
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Familiya, Ism</th>
+                  <th>Telefon raqami</th>
+                  <th>Rol</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                {adminData.map((admin, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{admin.fullName}</td>
+                    <td>{admin.phone}</td>
+                    <td>{admin.role}</td>
+                    <td>
+                      <div className="three-dot-container">
+                        <button
+                          className="three-dot"
+                          onClick={() => handleThreeDotClick(admin.id)}
+                        >
+                          &#8942;
+                        </button>
+                        {showButtons === admin.id && (
+                          <div className="buttons-container">
+                            <button
+                              className="admin-delete"
+                              onClick={() => handleDeleteConfirmation(admin.id)}
+                            >
+                              <img
+                                src={Trush_Icon}
+                                alt="Trash Icon"
+                                width={20}
+                                height={20}
+                              />
+                              Oʻchirish
+                            </button>
+
+                            <button
+
+                              className="admin-edit"
+                              onClick={handleModify}
+                            >
+                              <img
+                                src={Edit}
+                                alt="Edit"
+                                width={25}
+                                height={25}
+                              />
+                              Tahrirlash
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
           {adminData.length === 0 && (
             <p className="loading-text">Yuklanmoqda...</p>
           )}
-
           <Modal
             isOpen={isModalOpen}
             className="react-modal-content"
@@ -222,13 +294,13 @@ const Header = () => {
                 </button>
                 <h2 className="modal-title">Admin qo’shish</h2>
                 <form className="modal-form" onSubmit={handleFormSubmit}>
-                  <label htmlFor="adminName">To'liq ism Sharif</label>
+                  <label htmlFor="adminName">Familiya, Ism</label>
                   <input
                     type="text"
                     className="input-name"
                     id="adminName"
                     name="fullName"
-                    placeholder="To'liq ism Sharif"
+                    placeholder="Familiya, Ism"
                     autoComplete="off"
                     value={newAdmin.fullName}
                     onChange={(e) =>
@@ -260,7 +332,7 @@ const Header = () => {
                       }
                     }}
                   />
-                    {error && <p className="error-message">{error}</p>}
+                  {error && <p className="error-message">{error}</p>}
 
                   <label htmlFor="phone">Telefon raqami</label>
                   <input
@@ -366,58 +438,20 @@ const Header = () => {
               </div>
             </div>
           </Modal>
-
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>To'liq ism Sharif</th>
-                <th>Telefon raqami</th>
-                <th>Rol</th>
-                <th>Change</th>
-              </tr>
-            </thead>
-            <tbody>
-              {adminData.map((admin, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{admin.fullName}</td>
-                  <td>{admin.phone}</td>
-                  <td>{admin.role}</td>
-                  <td>
-                    <div className="three-dot-container">
-                      <button
-                        className="three-dot"
-                        onClick={() => handleThreeDotClick(admin.id)}
-                      >
-                        &#8942;
-                      </button>
-                      {showButtons === admin.id && (
-                        <div className="buttons-container">
-                          <button
-                            className="admin-delete"
-                            onClick={handleDelete}
-                          >
-                            <img
-                              src={Trush_Icon}
-                              alt="Trush Icon"
-                              width={20}
-                              height={20}
-                            />
-                            O’chirish
-                          </button>
-                          <button className="admin-edit" onClick={handleModify}>
-                            <img src={Edit} alt="Edit" width={25} height={25} />
-                            Edit
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Modal
+            isOpen={isDeleteModalOpen}
+            className="react-modal-content"
+            overlayClassName="react-modal-overlay"
+            onRequestClose={handleDeleteCancelled}
+          >
+            <div className="delete-modal-content">
+              <h2 className="title-modal">Bu admini oʻchirib tashlamoqchimisiz?!</h2>
+              <div className="delete-modal-buttons">
+                <button className="delete-modal" onClick={handleDeleteConfirmed}>Oʻchirish</button>
+                <button className="cancel-modal" onClick={handleDeleteCancelled}>Bekor qilish</button>
+              </div>
+            </div>
+          </Modal>
         </div>
       </header>
     </>

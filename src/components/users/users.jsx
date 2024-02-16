@@ -1,11 +1,13 @@
-import "./users.css";
 import React, { useState, useEffect } from "react";
 import Nav from "../Nav/Nav";
+import "./users.css";
 
 const Users = () => {
   const [usersData, setUsersData] = useState([]);
   const [showButtons, setShowButtons] = useState(null);
   const [blockedUsers, setBlockedUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 15;
 
   useEffect(() => {
     fetchDataUsers();
@@ -71,68 +73,95 @@ const Users = () => {
     handleThreeDotClick(null);
   };
 
+  // Calculate the index range for the current page
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = usersData.slice(indexOfFirstUser, indexOfLastUser);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="container">
-      <Nav />
-
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Rasm</th>
-            <th>Ism</th>
-            <th>Familiya</th>
-            <th>Telefon</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {usersData.map((user, index) => (
-            <tr
-              key={index}
-              style={{
-                backgroundColor: localStorage.getItem(`blockedUser_${user.id}`)
-                  ? "#FFE1E1"
-                  : "#fff",
-              }}
-            >
-              <td>{index + 1}</td>
-              <td>
-                <img src={user.photoUrl} alt="user" width={55} />
-              </td>
-              <td>{user.name}</td>
-              <td>{user.surname}</td>
-              <td>{user.phone}</td>
-              <td>
-                <div className="three-dot-container">
-                  <button
-                    className="three-dot"
-                    onClick={() => handleThreeDotClick(user.id)}
-                  >
-                    &#8942;
-                  </button>
-                  {showButtons === user.id && (
-                    <div className="buttons-container">
-                      <button
-                        className="admin-delete"
-                        onClick={() => blockUser(user.id)}
-                      >
-                        Bloklash
-                      </button>
-                      <button
-                        className="admin-delete"
-                        onClick={() => unblockUser(user.id)}
-                      >
-                        Blokdan chiqarish
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </td>
+      <div className="admin-wrapper">
+        <Nav />
+        {usersData.length === 0 && (
+          <p className="loading-text">Yuklanmoqda...</p>
+        )}
+        <table className="table-users">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Rasm</th>
+              <th>Ism</th>
+              <th>Familiya</th>
+              <th>Telefon</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentUsers.map((user, index) => (
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: localStorage.getItem(
+                    `blockedUser_${user.id}`
+                  )
+                    ? "#FFE1E1"
+                    : "#fff",
+                }}
+              >
+                <td>{indexOfFirstUser + index + 1}</td>
+                <td>
+                  <img src={user.photoUrl} alt="user" width={55} />
+                </td>
+                <td>{user.name}</td>
+                <td>{user.surname}</td>
+                <td>{user.phone}</td>
+                <td>
+                  <div className="three-dot-container">
+                    <button
+                      className="three-dot"
+                      onClick={() => handleThreeDotClick(user.id)}
+                    >
+                      &#8942;
+                    </button>
+                    {showButtons === user.id && (
+                      <div className="buttons-container">
+                        <button
+                          className="admin-delete"
+                          onClick={() => blockUser(user.id)}
+                        >
+                          Bloklash
+                        </button>
+                        <button
+                          className="admin-delete"
+                          onClick={() => unblockUser(user.id)}
+                        >
+                          Blokdan chiqarish
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="pagination">
+        {[...Array(Math.ceil(usersData.length / usersPerPage))].map(
+          (_, index) => (
+            <button
+              key={index}
+              onClick={() => paginate(index + 1)}
+              className={currentPage === index + 1 ? "activePage" : ""}
+            >
+              {index + 1}
+            </button>
+          )
+        )}
+      </div>
     </div>
   );
 };

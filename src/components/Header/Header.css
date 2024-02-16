@@ -8,36 +8,15 @@
   transform: translateX(100px);
 }
 
-.box {
-  width: 300px;
+.just {
+  width: auto;
   display: flex;
   justify-content: space-between;
-}
-
-
-
-.react-modal-content {
-  position: relative;
-  padding: 20px;
-  border-radius: 8px;
-  outline: none;
 }
 
 .modal-title {
   text-align: center;
 }
-
-.modal-btn {
-  width: 40px;
-  height: 40px;
-  padding: 13px;
-  border-radius: 8px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
-  margin-top: 20px;
-} 
 
 .modal-form {
   width: 300px;
@@ -54,23 +33,25 @@
   padding: 8px;
   margin-bottom: 16px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(208, 213, 221, 1);
   border-radius: 4px;
+  outline: none;
 }
 
 .input-name {
   padding: 8px;
   margin-bottom: 16px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(208, 213, 221, 1);
   border-radius: 4px;
+  outline: none;
 }
 .select-role {
-  padding: 8px;
   margin-bottom: 16px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(208, 213, 221, 1);
   border-radius: 4px;
+  outline: none;
 }
 
 .save-btn {
@@ -80,7 +61,7 @@
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
+  background-color: rgba(21, 112, 239, 1);
 }
 
 .react-modal-content {
@@ -128,16 +109,12 @@
   border: none;
 }
 
-table {
-  width:   1290px;
+.admin-table {
+  width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  transform: translateX(40px);
-  cursor: pointer;
-}
-
-thead {
-  background-color: #f2f2f2;
+  transform: translateX(-150px);
+  margin-top: 80px;
+  cursor: pointer;  
 }
 
 th,
@@ -148,7 +125,7 @@ td {
 }
 
 th {
-  color: black;
+  color: rgba(71, 84, 103, 1);
 }
 
 tbody tr:hover {
@@ -171,7 +148,7 @@ tbody tr:hover {
 
 .admin-btn {
   width: 24px;
-  height: 24px; 
+  height: 24px;
   border: 3px;
   color: rgba(107, 107, 107, 1);
   background-color: #fff;
@@ -182,7 +159,7 @@ tbody tr:hover {
 
 .editd-btn {
   width: 24px;
-  height: 24px; 
+  height: 24px;
   border: 3px;
   font-size: 20px;
   color: rgba(107, 107, 107, 1);
@@ -190,6 +167,10 @@ tbody tr:hover {
   cursor: pointer;
   font-size: 30px;
   transform: translateX(506px);
+}
+
+.title-modal{
+  text-align: center;
 }
 @media only screen and (max-width: 768px) and (max-width: 1024px) {
   .box {
@@ -206,11 +187,5 @@ tbody tr:hover {
 
   table {
     width: 100%; /* Adjust width for better responsiveness */
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .modal-btn {
-    transform: translateX(108px);
   }
 }

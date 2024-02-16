@@ -1,23 +1,18 @@
-.logo {
+.logo-admin {
   margin-bottom: 11px;
-  transform: translateX(70px);
   object-fit: contain;
   cursor: pointer;
 }
 
 .buttons {
-  width: auto;
-  display: flex;
-  border-radius: 50px;
-  transform: translateX(200px);
-  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 8px, 12px, 8px, 12px;
 }
 
 .btn {
   display: flex;
-  align-items: center;
   width: auto;
-  height: 50px;
+  height: auto;
   padding: 21px;
   border-radius: 8px;
   text-decoration: none;
@@ -31,8 +26,7 @@
 .active {
   padding: 11px 31px; /* Fix the syntax error here */
   border-radius: 50px;
-  background-color: rgba(37, 182, 121, 1);
-  color: #fafafa;
+  background-color: #F9FAFB;
 }
 @media only screen and (max-width: 1137px) {
   .logo {

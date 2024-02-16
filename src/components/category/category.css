@@ -1,5 +1,3 @@
-
-
 .react-modal-content {
   position: relative;
   padding: 20px;
@@ -62,20 +60,6 @@
   border-radius: 8px;
   max-width: 600px;
   outline: none;
-}
-
-
-
-.modal-btn {
-  width: 40px;
-  height: 40px;
-  padding: 13px;
-  border-radius: 8px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
-  margin-top: 20px;
 }
 
 .categorys-btn {
@@ -128,11 +112,6 @@
   margin: auto;
 }
 
-.newClass {
-  color: #25b679;
-  text-decoration: underline;
-}
-
 .select-category {
   border-radius: 4px;
   width: 300px;
@@ -141,7 +120,6 @@
   outline: none;
   margin-bottom: 10px;
 }
-
 
 .select-category > .select {
   font-style: oblique;
@@ -157,7 +135,7 @@
 }
 
 .category-save {
-  background-color: rgba(37, 182, 121, 1);
+  background-color: rgba(21, 112, 239, 1);
   color: #fff;
   padding: 10px;
   border: none;
@@ -174,50 +152,6 @@
   cursor: pointer;
   font-size: 30px;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-thead {
-  background-color: #f2f2f2;
-}
-
-th,
-td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  color: black;
-  text-align: left;
-}
-
-tbody tr:hover {
-  background-color: #f5f5f5;
-}
-
-.mn {
-  width: 50px;
-  transform: translateX(-70px);
-
-}
-
-.ienner {
-  display: flex;
-  width: 145px;
-  height: 30px;
-  justify-content: center;
-  background-color: #25b67933;
-  padding: 4px 16px;
-  color: #6B6B6B;
-  border-radius: 50px;
-  transform: translateX(-70px);
-}
-
-
 
 .react-modal-content {
   position: relative;
@@ -281,19 +215,6 @@ tbody tr:hover {
   border-radius: 8px;
   max-width: 600px;
   outline: none;
-}
-
-
-.modal-btn {
-  width: 40px;
-  height: 40px;
-  padding: 13px;
-  border-radius: 8px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
-  margin-top: 20px;
 }
 
 .wrapper-buttons {
@@ -314,15 +235,16 @@ tbody tr:hover {
 }
 
 .categoriya-btn {
-  width: 40px;
+  width: 160px;
   height: 40px;
-  padding: 13px;
+  padding: 10px, 14px, 10px, 14px;
   border-radius: 8px;
   border: none;
-  color: #fff;
   cursor: pointer;
-  background-color: rgba(37, 182, 121, 1);
-  transform: translateX(1030px);
+  transform: translateX(750px);
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #d0d5dd;
 }
 
 .categorys-btn {
@@ -375,11 +297,6 @@ tbody tr:hover {
   margin: auto;
 }
 
-.newClass {
-  color: #25b679;
-  text-decoration: underline;
-}
-
 .select-category {
   border-radius: 4px;
   width: 300px;
@@ -388,7 +305,6 @@ tbody tr:hover {
   outline: none;
   margin-bottom: 10px;
 }
-
 
 .select-category > .select {
   font-style: oblique;
@@ -403,22 +319,11 @@ tbody tr:hover {
   margin-bottom: 10px;
 }
 
-.category-save {
-  background-color: rgba(37, 182, 121, 1);
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-table {
-  width: 100%;
+.category-table {
+  width: 1187px;
   border-collapse: collapse;
-  margin-top: 20px;
-}
-
-thead {
-  background-color: #f2f2f2;
+  transform: translateX(10px);
+  cursor: pointer;
 }
 
 th,
@@ -439,7 +344,6 @@ tbody tr:hover {
 .mn {
   width: 50px;
   transform: translateX(-70px);
-
 }
 
 .ienner {
@@ -447,12 +351,48 @@ tbody tr:hover {
   width: 145px;
   height: 30px;
   justify-content: center;
-  background-color: #25b67933;
   padding: 4px 16px;
-  color: #6B6B6B;
+  color: #6b6b6b;
   border-radius: 50px;
-  transform: translateX(-70px);
+  transform: translateX(-111px);
 }
+
+.category-delete-modal {
+  width: 170px;
+  height: 44px;
+  padding: 10px, 16px, 10px, 16px;
+  border-radius: 8px;
+  border: solid 1px rgba(208, 213, 221, 1);
+  background-color: red;
+  gap: 6px;
+  margin-left: 90px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.category-cancel-modal {
+  width: 170px;
+  height: 44px;
+  padding: 10px, 16px, 10px, 16px;
+  border-radius: 8px;
+  border: solid 1px rgba(208, 213, 221, 1);
+  background-color: transparent;
+  gap: 6px;
+  margin-left: 22px;
+}
+
+.wrapper-category {
+  position: fixed;
+  top: 50%; /* Adjust the top position as needed */
+  left: 50%; /* Adjust the left position as needed */
+  transform: translate(-50%, -50%);
+  background-color: #fff; /* Set your desired background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a visual effect */
+  z-index: 999; /* Set a higher z-index to ensure it appears above other elements */
+}
+
 
 /* Responsive styles for laptop screens */
 @media screen and (max-width: 1025px) and (min-width: 1000px) {

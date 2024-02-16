@@ -9,6 +9,8 @@ const FAQ = () => {
   const [faqItems, setFaqItems] = useState([]);
   const [formError, setFormError] = useState("");
   const [showActions, setShowActions] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedFaqItem, setSelectedFaqItem] = useState(null);
 
   const [faqData, setFaqData] = useState({
     questionL: "",
@@ -19,10 +21,10 @@ const FAQ = () => {
 
   const handleFormSubmitFaq = async (event) => {
     event.preventDefault();
-  
+
     const storedToken = localStorage.getItem("authToken");
     const { questionL, questionK, answerL, answerK } = faqData;
-  
+
     // Check if any input length is 0
     if (
       questionL.length === 0 ||
@@ -33,7 +35,7 @@ const FAQ = () => {
       setFormError("Barcha malumotlarni to'ldirish shart ?!.");
       return;
     }
-  
+
     const response = await fetch("https://avtowatt.uz/api/v1/faq", {
       method: "POST",
       headers: {
@@ -47,20 +49,18 @@ const FAQ = () => {
         answerK,
       }),
     });
-  
-  
+
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
       const responseData = await response.json();
       setFaqItems((prevFaqItems) => [...prevFaqItems, responseData]);
-    } 
-  
+    }
+
     // Fetch updated FAQ data and clear form/error
     fetchDataFaq();
     setFormError("");
     closeModal();
   };
-  
 
   const fetchDataFaq = async () => {
     const storedToken = localStorage.getItem("authToken");
@@ -179,19 +179,59 @@ const FAQ = () => {
     );
   };
 
+  const openDeleteModal = (faqItem) => {
+    setSelectedFaqItem(faqItem);
+    setIsDeleteModalOpen(true);
+    handleActionsClick(null)
+  };
+
+  const closeDeleteModal = () => {
+    setSelectedFaqItem(null);
+    setIsDeleteModalOpen(false);
+  };
+
   Modal.setAppElement("#root"); // Assuming your root element has the id "root"
 
   return (
     <div className="container">
-      <Nav />
-      <div className="box">
-        <h1 className="news-title">FAQ</h1>
-        <button className="modal-btn" onClick={openModal}>
-          +
-        </button>
-      </div>
-      {faqItems.length === 0 && <p className="loading-text">Yuklanmoqda...</p>}
+      <div className="admin-wrapper">
+        <Nav />
+        <div className="news-box">
+          <h1 className="news-title">FAQ</h1>
+          <button className="modal-btn" onClick={openModal}>
+            ➕ FAQ
+          </button>
+        </div>
+        {faqItems.length === 0 && (
+          <p className="loading-text">Yuklanmoqda...</p>
+        )}
 
+        <ul className="news-list">
+          {faqItems.map((faqItem) => (
+            <li className="news-item" key={faqItem.id}>
+              <button
+                className="news-btn"
+                onClick={() => handleActionsClick(faqItem.id)}
+              >
+                &#x22EE;
+              </button>
+              {showActions === faqItem.id && (
+                <div key={`actions-${faqItem.id}`}>
+                  <button
+                    className="new-delete"
+                    onClick={() => openDeleteModal(faqItem)}
+                  >
+                    <img src={Trush_Icon} alt="Trush" width={25} height={25} />{" "}
+                    O'chirish
+                  </button>
+                </div>
+              )}
+              <h2 className="new-title">{faqItem.question}</h2>
+              <p className="news-content">{faqItem.answer}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
       <Modal
         isOpen={isModalOpen}
         className="react-modal-content"
@@ -260,32 +300,25 @@ const FAQ = () => {
           </form>
         </div>
       </Modal>
-
-      <ul className="news-list">
-        {faqItems.map((faqItem) => (
-          <li className="news-item" key={faqItem.id}>
-            <button
-              className="news-btn"
-              onClick={() => handleActionsClick(faqItem.id)}
-            >
-              &#x22EE;
-            </button>
-            {showActions === faqItem.id && (
-              <div key={`actions-${faqItem.id}`}>
-                <button
-                  className="new-delete"
-                  onClick={() => handleDeleteClick(faqItem.id)}
-                >
-                  <img src={Trush_Icon} alt="Trush" width={25} height={25} />{" "}
-                  O'chirish
-                </button>
-              </div>
-            )}
-            <h2 className="new-title">{faqItem.question}</h2>
-            <p className="news-content">{faqItem.answer}</p>
-          </li>
-        ))}
-      </ul>
+      <Modal
+        isOpen={isDeleteModalOpen}
+        className="react-modal-content"
+        overlayClassName="react-modal-overlay"
+        onRequestClose={closeDeleteModal}
+      >
+        <div>
+        <button className="news-close-btn" onClick={closeDeleteModal}>
+            &#10006;
+          </button>
+          <h3 className="modal-delete-title">
+          Haqiqatan ham oʻchirib tashlamoqchimisiz
+          </h3>
+          <button className="category-delete-modal" onClick={() => handleDeleteClick(selectedFaqItem.id)}>
+            Xa
+          </button>
+          <button className="cancel-modal" onClick={closeDeleteModal}>Yo'q</button>
+        </div>
+      </Modal>
     </div>
   );
 };

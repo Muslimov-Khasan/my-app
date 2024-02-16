@@ -5,19 +5,18 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .contianer {
   max-width: 1140px;
-  padding: 20px 20px; 
+  padding: 20px 20px;
 }
 
 .close-btn {
   width: 24px;
-  height: 24px; 
+  height: 24px;
   border: 3px;
-  font-size: 20px;
   color: rgba(107, 107, 107, 1);
   background-color: #fff;
   cursor: pointer;
@@ -25,22 +24,42 @@ body {
   transform: translateX(500px);
 }
 
+.modal-btn {
+  width: 160px;
+  height: 40px;
+  padding: 10px, 14px, 10px, 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateX(907px);
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #d0d5dd;
+}
+
 .loading-text {
+  margin: 0 auto;
   text-align: center;
   font-size: 30px;
 }
 
 .wrapper-link {
-  color: #000;
-  width: 132px;
-  height: 33px;
-  padding: 0px, 8px, 2px, 8px;
-  border: 0px, 0px, 1px, 0px;
-  gap: 10px;
+  color: rgba(52, 64, 84, 1);
+  width: 107px;
+  height: 40px;
+  padding: 8px 33px; /* Corrected padding */
+  border: 0px 1px 0px 0px; /* Border style */
+  gap: 8px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
   text-decoration: none;
-  font-size: 24px;
-  margin-left: 11px;
+  line-height: 20px;
+  letter-spacing: 0em;
 }
+
+
 
 .btn-file {
   display: flex;
@@ -65,9 +84,59 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000; /* Ensure it appears above other elements */
+  background-color: rgba(31, 31, 31, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(31, 31, 31, 0.3);
+}
+.admin-wrapper {
+  display: flex;
+}
+
+.newClass {
+  text-decoration: none;
+  background-color: #fff; /* White background color */
+  border: 1px solid #d0d5dd; /* Border style */
+  border-radius: 8px; /* Border radius */
+  padding: 8px 33px; /* Adjust padding as needed */
+}
+
+
+.po {
+  
+  border-radius: 8px;
+  transform: translateX(100px);
+}
+
+.addcatgory-word {
+  display: flex;
+  margin-top: 32px;
+}
+.cancel-modal {
+  width: 170px;
+  height: 44px;
+  padding: 10px, 16px, 10px, 16px;
+  border-radius: 8px;
+  border: solid 1px rgba(208, 213, 221, 1);
+  background-color: transparent;
+  gap: 6px;
+  margin-left: 22px;
+  cursor: pointer;
+}
+.delete-modal {
+  width: 170px;
+  height: 44px;
+  padding: 10px, 16px, 10px, 16px;
+  border-radius: 8px;
+  border: solid 1px rgba(208, 213, 221, 1);
+  background-color: red;
+  gap: 6px;
+  margin-left: 11px;
+  cursor: pointer;
+  color: #fff;
 }

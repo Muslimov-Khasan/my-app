@@ -29,8 +29,8 @@ const Nav = () => {
     <div className="contianer">
       <div className="nav-wrapper">
 
-      <Link to="/Monitoring" className="">
-        <img className="logo" src={Logo} alt="logo" width={164} height={42} />
+      <Link to="/Monitoring">
+        <img className="logo-admin" src={Logo} alt="logo" width={164} height={42} />
       </Link>
       <div className="buttons">
         <NavLink
@@ -45,14 +45,14 @@ const Nav = () => {
           className={`btn ${activeBtn === "Admin" ? "active" : ""}`}
           onClick={() => handleButtonClick("Admin", "/adminAdd")}
         >
-          Admin qo’shish
+          Admin
         </NavLink>
         <NavLink
           to="/add-category"
           className={`btn ${activeBtn === "Kategoriya" ? "active" : ""}`}
           onClick={() => handleButtonClick("Kategoriya", "/add-category")}
         >
-          Kategoriya qo’shish
+          Kategoriya 
         </NavLink>
         <NavLink
           to="/news"
