@@ -357,6 +357,10 @@ const AddCategory = () => {
 
   Modal.setAppElement("#root");
   return (
+    <>
+       {categories.length === 0 && (
+          <p className="loading-text">Yuklanmoqda...</p>
+        )}
     <div className="container">
       <div className="admin-wrapper">
         <Nav />
@@ -379,9 +383,9 @@ const AddCategory = () => {
             </button>
           </div>
         </div>
-        {categories.length === 0 && (
+        {/* {categories.length === 0 && (
           <p className="loading-text">Yuklanmoqda...</p>
-        )}
+        )} */}
         <table className="add-catgory-table">
           <thead>
             <tr>
@@ -627,6 +631,7 @@ const AddCategory = () => {
         </div>
       </Modal>
     </div>
+    </>
   );
 };
 

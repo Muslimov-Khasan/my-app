@@ -82,12 +82,14 @@ const Users = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
+       {usersData.length === 0 && (
+          <p className="loading-text">Yuklanmoqda...</p>
+        )}
     <div className="container">
       <div className="admin-wrapper">
         <Nav />
-        {usersData.length === 0 && (
-          <p className="loading-text">Yuklanmoqda...</p>
-        )}
+     
         <table className="table-users">
           <thead>
             <tr>
@@ -163,6 +165,7 @@ const Users = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

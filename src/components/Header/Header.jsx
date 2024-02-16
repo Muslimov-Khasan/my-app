@@ -204,6 +204,9 @@ const Header = () => {
 
   return (
     <>
+      {adminData.length === 0 && (
+            <p className="loading-text">Yuklanmoqda...</p>
+          )}
       <header className="header">
         <div className="container">
           <div className="admin-wrapper">
@@ -278,9 +281,9 @@ const Header = () => {
               </tbody>
             </table>
           </div>
-          {adminData.length === 0 && (
+          {/* {adminData.length === 0 && (
             <p className="loading-text">Yuklanmoqda...</p>
-          )}
+          )} */}
           <Modal
             isOpen={isModalOpen}
             className="react-modal-content"
@@ -445,6 +448,9 @@ const Header = () => {
             onRequestClose={handleDeleteCancelled}
           >
             <div className="delete-modal-content">
+            <button className="contact-close" onClick={handleDeleteCancelled}>
+                &#10006;
+              </button>
               <h2 className="title-modal">Bu admini oʻchirib tashlamoqchimisiz?!</h2>
               <div className="delete-modal-buttons">
                 <button className="delete-modal" onClick={handleDeleteConfirmed}>Oʻchirish</button>

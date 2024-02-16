@@ -39,10 +39,15 @@ body {
 }
 
 .loading-text {
-  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
   text-align: center;
   font-size: 30px;
 }
+
 
 .wrapper-link {
   color: rgba(52, 64, 84, 1);
@@ -58,8 +63,6 @@ body {
   line-height: 20px;
   letter-spacing: 0em;
 }
-
-
 
 .btn-file {
   display: flex;
@@ -106,9 +109,7 @@ body {
   padding: 8px 33px; /* Adjust padding as needed */
 }
 
-
 .po {
-  
   border-radius: 8px;
   transform: translateX(100px);
 }

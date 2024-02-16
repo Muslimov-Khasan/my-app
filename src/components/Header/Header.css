@@ -171,6 +171,7 @@ tbody tr:hover {
 
 .title-modal{
   text-align: center;
+  transform: translateY(-50px) translateX(-10px);
 }
 @media only screen and (max-width: 768px) and (max-width: 1024px) {
   .box {

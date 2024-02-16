@@ -300,6 +300,10 @@ const Category = () => {
   Modal.setAppElement("#root");
 
   return (
+    <>
+     {subCategories.length === 0 && (
+          <p className="loading-text">Yuklanmoqda...</p>
+        )}
     <div className="container">
       <div className="admin-wrapper">
         <Nav />
@@ -521,7 +525,7 @@ const Category = () => {
             <button className="news-close-btn" onClick={closeDeleteModal}>
               &#10006;
             </button>
-          <h2>
+          <h2 className="category-info">
             Haqiqatan ham oʻchirib tashlamoqchimisiz{" "}
             {selectedItem && selectedItem.nameL}?
           </h2>
@@ -537,6 +541,7 @@ const Category = () => {
         </div>
       </Modal>
     </div>
+    </>
   );
 };
 

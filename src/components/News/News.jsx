@@ -199,6 +199,9 @@ const News = () => {
 
   return (
     <>
+         {newsItems.length === 0 && (
+            <p className="loading-text">Yuklanmoqda...</p>
+          )}
       <div className="container">
         <div className="admin-wrapper">
           <Nav />
@@ -208,9 +211,7 @@ const News = () => {
               ➕ Qo’shish
             </button>
           </div>
-          {newsItems.length === 0 && (
-            <p className="loading-text">Yuklanmoqda...</p>
-          )}
+   
 
           <ul className="news-list">
             {newsItems.map((newsItem) => (
