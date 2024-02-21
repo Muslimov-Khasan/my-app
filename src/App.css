@@ -5,7 +5,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .contianer {
@@ -47,7 +47,6 @@ body {
   text-align: center;
   font-size: 30px;
 }
-
 
 .wrapper-link {
   color: rgba(52, 64, 84, 1);
@@ -115,7 +114,8 @@ body {
 }
 
 .addcatgory-word {
-  display: flex;
+  transform: translateX(-100px);
+
   margin-top: 32px;
 }
 .cancel-modal {

@@ -199,9 +199,7 @@ const News = () => {
 
   return (
     <>
-         {newsItems.length === 0 && (
-            <p className="loading-text">Yuklanmoqda...</p>
-          )}
+      {newsItems.length === 0 && <p className="loading-text">Yuklanmoqda...</p>}
       <div className="container">
         <div className="admin-wrapper">
           <Nav />
@@ -211,7 +209,6 @@ const News = () => {
               ➕ Qo’shish
             </button>
           </div>
-   
 
           <ul className="news-list">
             {newsItems.map((newsItem) => (
@@ -330,7 +327,9 @@ const News = () => {
           <button className="news-close-btn" onClick={closeDeleteModal}>
             &#10006;
           </button>
-          <h2 className="modal-delete-title">Haqiqatan ham oʻchirib tashlamoqchimisiz</h2>
+          <h2 className="modal-delete-title">
+            Haqiqatan ham oʻchirib tashlamoqchimisiz
+          </h2>
           <button
             className="category-delete-modal"
             onClick={() => handleDeleteClick(selectedNewsItem.id)}

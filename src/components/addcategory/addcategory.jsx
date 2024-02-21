@@ -358,178 +358,236 @@ const AddCategory = () => {
   Modal.setAppElement("#root");
   return (
     <>
-       {categories.length === 0 && (
-          <p className="loading-text">Yuklanmoqda...</p>
-        )}
-    <div className="container">
-      <div className="admin-wrapper">
-        <Nav />
-        <div className="addcatgory-word">
-          <div className="po">
-            <Link
-              className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
-              to="/add-category"
-            >
-              Kategoriya
-            </Link>
-            <Link
-              className={`wrapper-link ${shouldAddClass ? "" : ""}`}
-              to="/category"
-            >
-              Bo'lim
-            </Link>
-            <button className="addcategoriya-btn" onClick={openModal}>
-              ➕ Kategoriya qo’shish
-            </button>
+      {categories.length === 0 && (
+        <p className="loading-text">Yuklanmoqda...</p>
+      )}
+      <div className="container">
+        <div className="admin-wrapper">
+          <Nav />
+          <div className="addcatgory-word">
+            <div className="po">
+              <Link
+                className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
+                to="/add-category"
+              >
+                Kategoriya
+              </Link>
+              <Link
+                className={`wrapper-link ${shouldAddClass ? "" : ""}`}
+                to="/category"
+              >
+                Bo'lim
+              </Link>
+              <button className="addcategoriya-btn" onClick={openModal}>
+                ➕ Kategoriya qo’shish
+              </button>
+            </div>
           </div>
-        </div>
-        {/* {categories.length === 0 && (
-          <p className="loading-text">Yuklanmoqda...</p>
-        )} */}
-        <table className="add-catgory-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Rasm</th>
-              <th>Kategoriya nomi</th>
-              <th>Категория номи</th>
-              <th>status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((addcategory, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <img
-                    src={addcategory.photoUrl}
-                    alt="Description"
-                    style={{ width: "50px", height: "50px" }}
-                  />
-                </td>
-                <td>{addcategory.nameL}</td>
-                <td>{addcategory.nameK}</td>
-                <td>
-                  <div className="toggle-wrapper">
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        checked={addcategory.status === "ACTIVE"}
-                        onChange={() =>
-                          handleStatusChange(
-                            addcategory.id,
-                            addcategory.status === "ACTIVE"
-                              ? "NOT_ACTIVE"
-                              : "ACTIVE"
-                          )
-                        }
-                      />
-                      <span className="slider round"></span>
-                    </label>
-                  </div>
-                  {addcategory.status && (
-                    <p className="toggle-message">{addcategory.status}</p>
-                  )}
-                </td>
-
-                <td>
-                  <button
-                    className="categories-btn"
-                    onClick={() => {
-                      threePointButton(index);
-                    }}
-                  >
-                    &#x22EE;
-                  </button>
-
-                  {showActions && activeIndex === index && (
-                    <div className="addcategories-buttons">
-                      <button
-                        className="addcategories-delete"
-                        onClick={() => {
-                          handleDeleteClick(index);
-                          setShowActions(false); // Close the options after deleting
-                        }}
-                      >
-                        <img
-                          className="picture"
-                          src={Trush_Icon}
-                          alt="Trush Icon"
-                          width={20}
-                          height={20}
-                        />
-                        o'chirish
-                      </button>
-                      <button
-                        className="addcategories-edit"
-                        onClick={() => {
-                          handleEditClick(index);
-                          setShowActions(false); // Close the options after editing
-                        }}
-                      >
-                        <img
-                          className="picture"
-                          src={Edit}
-                          alt="Edit"
-                          width={25}
-                          height={25}
-                        />
-                        Tahrirlash
-                      </button>
-                    </div>
-                  )}
-                </td>
+          <table className="add-catgory-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Rasm</th>
+                <th>Kategoriya nomi</th>
+                <th>Категория номи</th>
+                <th>status</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <Modal
-        isOpen={isModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={closeModal}
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <button className="add-btn" onClick={closeModal}>
-              &#10006;
-            </button>
-            <h2 className="modal-title">Yangi Kategoriya Qo'shish</h2>
+            </thead>
+            <tbody>
+              {categories.map((addcategory, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <img
+                      src={addcategory.photoUrl}
+                      alt="Description"
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  </td>
+                  <td>{addcategory.nameL}</td>
+                  <td>{addcategory.nameK}</td>
+                  <td>
+                    <div className="toggle-wrapper">
+                      <label className="switch">
+                        <input
+                          type="checkbox"
+                          checked={addcategory.status === "ACTIVE"}
+                          onChange={() =>
+                            handleStatusChange(
+                              addcategory.id,
+                              addcategory.status === "ACTIVE"
+                                ? "NOT_ACTIVE"
+                                : "ACTIVE"
+                            )
+                          }
+                        />
+                        <span className="slider round"></span>
+                      </label>
+                    </div>
+                    {addcategory.status && (
+                      <p className="toggle-message">{addcategory.status}</p>
+                    )}
+                  </td>
+
+                  <td>
+                    <button
+                      className="categories-btn"
+                      onClick={() => {
+                        threePointButton(index);
+                      }}
+                    >
+                      &#x22EE;
+                    </button>
+
+                    {showActions && activeIndex === index && (
+                      <div className="addcategories-buttons">
+                        <button
+                          className="addcategories-delete"
+                          onClick={() => {
+                            handleDeleteClick(index);
+                            setShowActions(false); // Close the options after deleting
+                          }}
+                        >
+                          <img
+                            className="picture"
+                            src={Trush_Icon}
+                            alt="Trush Icon"
+                            width={20}
+                            height={20}
+                          />
+                          o'chirish
+                        </button>
+                        <button
+                          className="addcategories-edit"
+                          onClick={() => {
+                            handleEditClick(index);
+                            setShowActions(false); // Close the options after editing
+                          }}
+                        >
+                          <img
+                            className="picture"
+                            src={Edit}
+                            alt="Edit"
+                            width={25}
+                            height={25}
+                          />
+                          Tahrirlash
+                        </button>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <Modal
+          isOpen={isModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={closeModal}
+        >
+          <div className="modal-content">
+            <div className="modal-header">
+              <button className="add-btn" onClick={closeModal}>
+                &#10006;
+              </button>
+              <h2 className="modal-title">Yangi Kategoriya Qo'shish</h2>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={handleFormSubmit}>
+                <h4 style={{ color: "red", textAlign: "center" }}>{error}</h4>
+                <label>
+                  Kategoriya nomi
+                  <input
+                    type="text"
+                    name="nameL"
+                    value={categoriesData.nameL}
+                    onChange={handleInputChange}
+                    autoComplete="off"
+                  />
+                </label>
+                <label>
+                  Категория номи
+                  <input
+                    type="text"
+                    name="nameK"
+                    value={categoriesData.nameK}
+                    autoComplete="off"
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    accept=".svg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                  />
+                  <button className="btn-file" onClick={handleUploadClick}>
+                    <img
+                      className="shablon"
+                      src={Shablon}
+                      alt="Description"
+                      width={365}
+                    />
+                  </button>
+                </label>
+                <button className="save-btn" type="submit">
+                  Saqlash
+                </button>
+              </form>
+            </div>
           </div>
-          <div className="modal-body">
-            <form onSubmit={handleFormSubmit}>
-              <h4 style={{ color: "red", textAlign: "center" }}>{error}</h4>
-              <label>
-                Kategoriya nomi
-                <input
-                  type="text"
-                  name="nameL"
-                  value={categoriesData.nameL}
-                  onChange={handleInputChange}
-                  autoComplete="off"
-                />
-              </label>
-              <label>
-                Категория номи
-                <input
-                  type="text"
-                  name="nameK"
-                  value={categoriesData.nameK}
-                  autoComplete="off"
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
+        </Modal>
+        <Modal
+          isOpen={isEditModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={closeEditModal}
+        >
+          <div className="modal-content">
+            <div className="modal-header">
+              <button className="category-close-btn" onClick={closeEditModal}>
+                &#10006;
+              </button>
+              <h2 className="modal-title">Kategoriyani tahrirlash</h2>
+            </div>
+            <div className="modal-body-editd">
+              <form onSubmit={handleEditFormSubmit}>
+                <label>
+                  Kategoriya nomi
+                  <input
+                    type="text"
+                    name="nameL"
+                    value={editCategoryData.nameL}
+                    onChange={handleEditInputChange}
+                    autoComplete="off"
+                  />
+                </label>
+                <label>
+                  Категория номи
+                  <input
+                    type="text"
+                    name="nameK"
+                    value={editCategoryData.nameK}
+                    autoComplete="off"
+                    onChange={handleEditInputChange}
+                  />
+                </label>
                 <input
                   type="file"
                   id="imageUpload"
                   accept=".svg"
-                  onChange={handleFileChange}
+                  onChange={handleFileInputChange}
                   style={{ display: "none" }}
                 />
-                <button className="btn-file" onClick={handleUploadClick}>
+                <button
+                  className="btn-file-edit"
+                  onClick={handleFileChangeEdit}
+                >
                   <img
                     className="shablon"
                     src={Shablon}
@@ -537,100 +595,49 @@ const AddCategory = () => {
                     width={365}
                   />
                 </button>
-              </label>
-              <button className="save-btn" type="submit">
-                Saqlash
-              </button>
-            </form>
+
+                <img
+                  className="edit-img"
+                  src={editCategoryData.photoUrl}
+                  alt="Description"
+                  style={{ width: "50px", height: "50px" }}
+                />
+
+                <button className="save-btn" type="submit">
+                  Saqlash
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </Modal>
-      <Modal
-        isOpen={isEditModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={closeEditModal}
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <button className="category-close-btn" onClick={closeEditModal}>
+        </Modal>
+        <Modal
+          isOpen={isDeleteModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={handleDeleteCancelled}
+        >
+          <div className="react-modal-content">
+            <button
+              className="delete-close-btn"
+              onClick={handleDeleteCancelled}
+            >
               &#10006;
             </button>
-            <h2 className="modal-title">Kategoriyani tahrirlash</h2>
-          </div>
-          <div className="modal-body-editd">
-            <form onSubmit={handleEditFormSubmit}>
-              <label>
-                Kategoriya nomi
-                <input
-                  type="text"
-                  name="nameL"
-                  value={editCategoryData.nameL}
-                  onChange={handleEditInputChange}
-                  autoComplete="off"
-                />
-              </label>
-              <label>
-                Категория номи
-                <input
-                  type="text"
-                  name="nameK"
-                  value={editCategoryData.nameK}
-                  autoComplete="off"
-                  onChange={handleEditInputChange}
-                />
-              </label>
-              <input
-                type="file"
-                id="imageUpload"
-                accept=".svg"
-                onChange={handleFileInputChange}
-                style={{ display: "none" }}
-              />
-              <button className="btn-file-edit" onClick={handleFileChangeEdit}>
-                <img
-                  className="shablon"
-                  src={Shablon}
-                  alt="Description"
-                  width={365}
-                />
+            <h2 className="delete-title">Kategoriyani o’chirish</h2>
+            <p className="delete-word">
+              “Dehqonchilik” kategoriyasini o’chirishni xohlaysizmi?
+            </p>
+            <div className="delete-modal-buttons">
+              <button className="delete-modal" onClick={handleDeleteConfirmed}>
+                O’chirish
               </button>
-
-              <img
-                className="edit-img"
-                src={editCategoryData.photoUrl}
-                alt="Description"
-                style={{ width: "50px", height: "50px" }}
-              />
-
-              <button className="save-btn" type="submit">
-                Saqlash
+              <button className="cancel-modal" onClick={handleDeleteCancelled}>
+                Bekor qilish
               </button>
-            </form>
+            </div>
           </div>
-        </div>
-      </Modal>
-      <Modal
-        isOpen={isDeleteModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={handleDeleteCancelled}
-      >
-        <div className="react-modal-content">
-          <button className="delete-close-btn" onClick={handleDeleteCancelled}>
-            &#10006;
-          </button>
-          <h2 className="delete-title">Kategoriyani o’chirish</h2>
-          <p className="delete-word">
-            “Dehqonchilik” kategoriyasini o’chirishni xohlaysizmi?
-          </p>
-          <div className="delete-modal-buttons">
-            <button className="delete-modal" onClick={handleDeleteConfirmed}>O’chirish</button>
-            <button className="cancel-modal" onClick={handleDeleteCancelled}>Bekor qilish</button>
-          </div>
-        </div>
-      </Modal>
-    </div>
+        </Modal>
+      </div>
     </>
   );
 };

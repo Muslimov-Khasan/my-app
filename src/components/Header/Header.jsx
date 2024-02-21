@@ -213,7 +213,7 @@ const Header = () => {
             <Nav />
             <div className="just">
               <h1 className="header-title">Admin</h1>
-              <button className="modal-btn" onClick={openModal}>
+              <button className="admin-modal-btn" onClick={openModal}>
                 <img src={addIcon} alt="addIcon" />
                 Admin qo’shish
               </button>
@@ -281,9 +281,7 @@ const Header = () => {
               </tbody>
             </table>
           </div>
-          {/* {adminData.length === 0 && (
-            <p className="loading-text">Yuklanmoqda...</p>
-          )} */}
+         
           <Modal
             isOpen={isModalOpen}
             className="react-modal-content"

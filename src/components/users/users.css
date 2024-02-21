@@ -24,7 +24,7 @@ tbody tr:hover {
 .pagination {
   display: flex;
   list-style: none;
-  margin-left: 300px;
+  margin-left: 333px;
   margin-top: 12px;
 }
 
@@ -39,7 +39,7 @@ tbody tr:hover {
 .pagination button.activePage {
   background-color: #007bff;
   color: #fff;
-  border: 1px solid #007bff;
+  border: 1px solid #F9FAFB;
 }
 
 @media only screen and (max-width: 1025px) {

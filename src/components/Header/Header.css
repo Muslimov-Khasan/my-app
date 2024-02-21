@@ -12,6 +12,8 @@
   width: auto;
   display: flex;
   justify-content: space-between;
+  transform: translateX(-90px);
+
 }
 
 .modal-title {
@@ -112,9 +114,27 @@
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  transform: translateX(-150px);
+  transform: translateX(-250px);
   margin-top: 80px;
   cursor: pointer;  
+}
+
+.admin-modal-btn {
+  width: 160px;
+  height: 40px;
+  padding: 10px, 14px, 10px, 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateX(817px);
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #d0d5dd;
+}
+
+.admin-modal-btn img {
+  margin-right: 10px;
 }
 
 th,

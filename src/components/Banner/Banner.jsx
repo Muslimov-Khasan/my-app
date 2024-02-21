@@ -29,7 +29,6 @@ const Banner = () => {
   }, []);
 
   const fetchData = async () => {
-    try {
       const storedToken = localStorage.getItem("authToken");
       const response = await fetch("https://avtowatt.uz/api/v1/banner/all", {
         method: "GET", // GET method
@@ -38,12 +37,9 @@ const Banner = () => {
         },
       });
       const data = await response.json();
-
       // Store fetched data in state
       setFetchedData(data);
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-    }
+   
   };
 
   const handleFileChange = async (event) => {

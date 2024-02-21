@@ -4,7 +4,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
-  transform: translateY(-27px) translateX(888px);
+  transform: translateY(-27px) translateX(790px);
   background-color: #fff;
   border: 1px solid #d0d5dd;
 }
@@ -216,8 +216,7 @@ input:checked + .slider + .toggle-message {
 .add-catgory-table {
   width: 100%;
   border-collapse: collapse;
-  transform: translateX(-150px);
-  margin-top: 80px;
+  transform: translateX(-280px) translateY(80px);
   cursor: pointer;
 }
 

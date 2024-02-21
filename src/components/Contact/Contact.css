@@ -141,10 +141,10 @@
 }
 
 .contact-table {
-  width: 930px;
+  width: 1022px;
   border-collapse: collapse;
   cursor: pointer;
-  transform: translateY(100px);
+  transform: translateY(100px) translateX(-120px);
 }
 
 th,
