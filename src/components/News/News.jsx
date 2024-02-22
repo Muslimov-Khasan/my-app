@@ -163,6 +163,7 @@ const News = () => {
     setNewsItems((prevNewsItems) =>
       prevNewsItems.filter((item) => item.id !== newsItemId)
     );
+    closeDeleteModal()
   };
 
   const openModal = () => {

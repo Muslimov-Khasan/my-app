@@ -66,7 +66,7 @@ const Header = () => {
         setNewAdmin({
           fullName: "",
           phone: "",
-          role: "",
+          role: "ROLE_ADMIN",
         });
         closeModal();
         fetchDataAll();

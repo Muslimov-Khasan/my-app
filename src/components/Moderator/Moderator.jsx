@@ -87,6 +87,7 @@ const Moderator = () => {
       }),
     });
     // If the response status is OK, proceed with parsing JSON
+    console.log(response.status);
     const data = await response.json();
     console.log(data);
 
@@ -108,11 +109,12 @@ const Moderator = () => {
 
   const openComplaintModal = (event) => {
     event.preventDefault(); // Prevent the default form submission
-
+    closeComplaintModal()
     if (productId) {
       setComplaintModalIsOpen(true);
       closeModal(); // Close the main modal if it's open
       handleCreateReport(event); // Pass the event object to handleCreateReport
+      
     }
   };
 
@@ -253,7 +255,7 @@ const Moderator = () => {
               className="confirmation-btn"
               onClick={(event) => openComplaintModal(event)}
             >
-              Shikoyat
+              Yuborish
             </button>
           </form>
         </div>

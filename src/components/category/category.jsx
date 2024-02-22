@@ -141,6 +141,7 @@ const Category = () => {
 
     fetchDataGetAll();
     closeModal();
+    closeDeleteModal()
   };
 
   const fetchDataGetAll = async () => {

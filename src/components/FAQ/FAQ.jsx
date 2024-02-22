@@ -133,6 +133,7 @@ const FAQ = () => {
     setFaqItems((prevFaqItems) =>
       prevFaqItems.filter((item) => item.id !== faqItemId)
     );
+    closeDeleteModal()
   };
 
   const handleInputChange = (name, value) => {

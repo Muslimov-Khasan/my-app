@@ -124,6 +124,7 @@ const Contact = () => {
     } catch (error) {
       console.error("Error deleting item:", error.message);
     }
+    closeDeleteModal()
   };
 
   const openModal = () => {
@@ -300,7 +301,7 @@ const Contact = () => {
         onRequestClose={closeDeleteModal}
       >
         <div>
-          <button className="contact-close" onClick={closeModal}>
+          <button className="contact-close" onClick={closeDeleteModal}>
             &#10006;
           </button>
           <h3 className="title-modal">
