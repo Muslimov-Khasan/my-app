@@ -109,12 +109,11 @@ const Moderator = () => {
 
   const openComplaintModal = (event) => {
     event.preventDefault(); // Prevent the default form submission
-    closeComplaintModal()
+    closeComplaintModal();
     if (productId) {
       setComplaintModalIsOpen(true);
       closeModal(); // Close the main modal if it's open
       handleCreateReport(event); // Pass the event object to handleCreateReport
-      
     }
   };
 
@@ -188,7 +187,9 @@ const Moderator = () => {
             <>
               <div className="nimaaa">
                 <p className="tesy">{productDetails.name} Nomi</p>
-                <p className="tesy">{productDetails.category.category.name} Kategory nomi</p>
+                <p className="tesy">
+                  {productDetails.category.category.name} Kategory nomi
+                </p>
               </div>
               <div className="modal-img-container">
                 {productDetails?.imageList.map((imageUrl, index) => (
@@ -244,15 +245,21 @@ const Moderator = () => {
             &#10006;
           </button>
           <form className="form-comment" onSubmit={handleCreateReport}>
+            <label htmlFor="Shikoyat Haqida Qisqacha Izoh">
+              Shikoyat Haqida Qisqacha Izoh
+            </label>
             <textarea
+              id="ShikoyatHaqidaQisqachaIzoh"
+              className="textarea-comment"
               cols="30"
               rows="10"
               placeholder="Izoh"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
+
             <button
-              className="confirmation-btn"
+              className="moderator-btn"
               onClick={(event) => openComplaintModal(event)}
             >
               Yuborish

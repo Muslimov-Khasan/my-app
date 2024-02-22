@@ -10,6 +10,13 @@
   width: 100%;
   max-width: 500px; 
   margin: 0 auto;
+  transform: translateY(20px);
+  margin-bottom: 11px;
+}
+
+.textarea-comment {
+  outline: none;
+  border: 1px solid #d0d5dd;
 }
 
 .moderator-title {
@@ -188,10 +195,28 @@
   transform: translateX(300px);
 }
 
+.moderator-btn {
+  width: 120px;
+  height: 44px;
+  padding: 10px, 16px, 10px, 16px;
+  border-radius: 8px;
+  border: 1px;
+  gap: 6px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  background-color: #17B26A;
+  color: #ffff;
+  text-align: center;
+  margin-left: 380px;
+  margin-top: 10px;
+}
+
 .button-row {
   display: flex;
   justify-content: space-between;
-  /* margin-top: 10px; Adjust as needed */
   margin-bottom: 21px;
   transform: translateX(160px);
 }
