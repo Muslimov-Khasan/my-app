@@ -69,7 +69,7 @@ const ModeratorCheked = () => {
   return (
     <>
       <div className="contianer">
-        <h2 className="moderator-title">Moderator</h2>
+        <h2 className="moderator-title">Tasdiqlangan</h2>
         <div className="button-row">
           <div className="po">
             <Link
