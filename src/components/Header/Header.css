@@ -1,19 +1,26 @@
 .header-title {
-  font-family: Nunito Sans;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: -0.02em;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
   text-align: left;
-  transform: translateX(100px);
+  transform: translateX(40px);
 }
 
 .just {
   width: auto;
   display: flex;
   justify-content: space-between;
-  transform: translateX(-90px);
+}
 
+.admin-title {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .modal-title {
@@ -111,14 +118,6 @@
   border: none;
 }
 
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  transform: translateX(-250px);
-  margin-top: 80px;
-  cursor: pointer;  
-}
-
 .admin-modal-btn {
   width: 160px;
   height: 40px;
@@ -127,7 +126,7 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-  transform: translateX(817px);
+  transform: translateX(847px);
   margin-top: 20px;
   background-color: #fff;
   border: 1px solid #d0d5dd;
@@ -135,6 +134,15 @@
 
 .admin-modal-btn img {
   margin-right: 10px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  cursor: pointer;
+  transform: translateX(-200px);
+  margin-top: 60px;
+  border-radius: 10px; /* Add border-radius property */
 }
 
 th,
@@ -146,6 +154,15 @@ td {
 
 th {
   color: rgba(71, 84, 103, 1);
+  padding: 12px, 24px, 12px, 24px;
+  border: 0px, 0px, 1px, 0px;
+  gap: 12px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 tbody tr:hover {
@@ -189,7 +206,7 @@ tbody tr:hover {
   transform: translateX(506px);
 }
 
-.title-modal{
+.title-modal {
   text-align: center;
   transform: translateY(-50px) translateX(-10px);
 }

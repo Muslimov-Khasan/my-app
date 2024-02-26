@@ -157,7 +157,10 @@ const ModeratorCheked = () => {
                 <p className="tesy">{productDetails.district}</p>
                 <p className="tesy">{productDetails.status} Status</p>
                 <p className="tesy">
-                  {productDetails.category.createdDate} Vaqti
+                  {new Date(
+                    productDetails.category.createdDate
+                  ).toLocaleString()}{" "}
+                  Vaqti
                 </p>
               </div>
             </>

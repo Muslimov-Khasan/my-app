@@ -85,7 +85,6 @@ const Header = () => {
     setAdminToDelete(adminId);
     setIsDeleteModalOpen(true);
     setShowButtons(null); // Close the three-dot container
-
   };
 
   // Function to handle the deletion of the admin
@@ -115,7 +114,7 @@ const Header = () => {
       console.error("Error deleting admin:", error);
     }
   };
-  
+
   const handleDeleteCancelled = () => {
     setAdminToDelete(null);
     setIsDeleteModalOpen(false);
@@ -204,9 +203,7 @@ const Header = () => {
 
   return (
     <>
-      {adminData.length === 0 && (
-            <p className="loading-text">Yuklanmoqda...</p>
-          )}
+      {adminData.length === 0 && <p className="loading-text">Yuklanmoqda...</p>}
       <header className="header">
         <div className="container">
           <div className="admin-wrapper">
@@ -218,9 +215,9 @@ const Header = () => {
                 Admin qo’shish
               </button>
             </div>
-
             <table className="admin-table">
               <thead>
+                <h2 className="admin-title">Adminlar ro’yxati</h2>
                 <tr>
                   <th>ID</th>
                   <th>Familiya, Ism</th>
@@ -260,7 +257,6 @@ const Header = () => {
                             </button>
 
                             <button
-
                               className="admin-edit"
                               onClick={handleModify}
                             >
@@ -281,7 +277,7 @@ const Header = () => {
               </tbody>
             </table>
           </div>
-         
+
           <Modal
             isOpen={isModalOpen}
             className="react-modal-content"
@@ -446,13 +442,25 @@ const Header = () => {
             onRequestClose={handleDeleteCancelled}
           >
             <div className="delete-modal-content">
-            <button className="contact-close" onClick={handleDeleteCancelled}>
+              <button className="contact-close" onClick={handleDeleteCancelled}>
                 &#10006;
               </button>
-              <h2 className="title-modal">Bu admini oʻchirib tashlamoqchimisiz?!</h2>
+              <h2 className="title-modal">
+                Bu admini oʻchirib tashlamoqchimisiz?!
+              </h2>
               <div className="delete-modal-buttons">
-                <button className="delete-modal" onClick={handleDeleteConfirmed}>Oʻchirish</button>
-                <button className="cancel-modal" onClick={handleDeleteCancelled}>Bekor qilish</button>
+                <button
+                  className="delete-modal"
+                  onClick={handleDeleteConfirmed}
+                >
+                  Oʻchirish
+                </button>
+                <button
+                  className="cancel-modal"
+                  onClick={handleDeleteCancelled}
+                >
+                  Bekor qilish
+                </button>
               </div>
             </div>
           </Modal>

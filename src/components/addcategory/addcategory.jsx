@@ -365,23 +365,37 @@ const AddCategory = () => {
         <div className="admin-wrapper">
           <Nav />
           <div className="addcatgory-word">
-            <div className="po">
+            <div
+              className="po"
+              style={{
+                display: "flex",
+                border: "1px solid #d0d5dd",
+                borderRadius: "8px",
+              }}
+            >
               <Link
                 className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
                 to="/add-category"
+                style={{ flex: 1, padding: "10px", textAlign: "center" }}
               >
                 Kategoriya
               </Link>
               <Link
                 className={`wrapper-link ${shouldAddClass ? "" : ""}`}
                 to="/category"
+                style={{
+                  flex: 1,
+                  padding: "10px",
+                  textAlign: "center",
+                  borderLeft: "1px solid #d0d5dd",
+                }}
               >
                 Bo'lim
               </Link>
-              <button className="addcategoriya-btn" onClick={openModal}>
-                ➕ Kategoriya qo’shish
-              </button>
             </div>
+            <button className="addcategoriya-btn" onClick={openModal}>
+              ➕ Kategoriya qo’shish
+            </button>
           </div>
           <table className="add-catgory-table">
             <thead>

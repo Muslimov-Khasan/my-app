@@ -311,18 +311,18 @@ const Category = () => {
 
         <div className="subcategory">
           <div className="key-word">
-            <Link
-              className={`wrapper-link ${shouldAddClass ? "" : ""}`}
-              to="/add-category"
-            >
-              Kategoriya
-            </Link>
-            <Link
-              className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
-              to="/category"
-            >
-              Bo'lim
-            </Link>
+          <Link
+                className={`wrapper-link ${shouldAddClass ? "" : ""}`}
+                to="/add-category"
+              >
+                Kategoriya
+              </Link>
+              <Link
+                className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
+                to="/category"
+              >
+                Bo'lim
+              </Link>
             <button className="categoriya-btn" onClick={openModal}>
               ➕ Bo'lim Qo'shish
             </button>

@@ -4,6 +4,15 @@
   cursor: pointer;
 }
 
+.nav-wrapper {
+  background: #fff;
+  border-right: 2px solid #eaecf0;
+  width: auto;
+  height: auto;
+  padding: 20px 0;
+  margin-left: 11px;
+}
+
 .buttons {
   border-radius: 8px;
   padding: 8px, 12px, 8px, 12px;
@@ -19,15 +28,17 @@
   text-decoration: none;
   text-align: center;
   color: #000;
-  font-weight: 600;
+  font-family: Inter;
   font-size: 17px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+
   margin-left: 10px;
 }
 .btn img {
   margin-right: 15px; /* Add space between image and text */
-  /* margin-top: -10px; */
-  transform: translateY(-3px);
-
 }
 .active {
   width: 250px;
@@ -35,7 +46,7 @@
   padding: 21px;
   border-radius: 6px;
   text-align: center;
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
 }
 @media only screen and (max-width: 1137px) {
   .logo {

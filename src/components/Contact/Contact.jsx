@@ -124,7 +124,7 @@ const Contact = () => {
     } catch (error) {
       console.error("Error deleting item:", error.message);
     }
-    closeDeleteModal()
+    closeDeleteModal();
   };
 
   const openModal = () => {
@@ -168,7 +168,7 @@ const Contact = () => {
           <Nav />
           <div className="contact-boxes">
             <button className="contact-btn" onClick={openModal}>
-              +
+              ➕ Contact
             </button>
           </div>
 

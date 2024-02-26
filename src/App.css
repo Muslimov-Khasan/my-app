@@ -5,7 +5,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .contianer {
@@ -56,11 +56,12 @@ body {
   border: 0px 1px 0px 0px; /* Border style */
   gap: 8px;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
-  text-decoration: none;
   line-height: 20px;
   letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
 }
 
 .btn-file {
@@ -103,7 +104,6 @@ body {
 .newClass {
   text-decoration: none;
   background-color: #fff; /* White background color */
-  border: 1px solid #d0d5dd; /* Border style */
   border-radius: 8px; /* Border radius */
   padding: 8px 33px; /* Adjust padding as needed */
 }
@@ -114,9 +114,7 @@ body {
 }
 
 .addcatgory-word {
-  transform: translateX(-100px);
-
-  margin-top: 32px;
+  transform: translateX(-100px) translateY(32px);
 }
 .cancel-modal {
   width: 170px;
