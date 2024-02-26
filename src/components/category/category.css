@@ -5,7 +5,11 @@
   outline: none;
 }
 
-
+.subcategory {
+  width: 200px;
+  transform: translateY(20px);
+  margin-bottom: 11px;
+}
 
 .modal-title {
   text-align: center;
@@ -328,7 +332,7 @@
 .category-table {
   width: 1187px;
   border-collapse: collapse;
-  transform: translateX(10px);
+  transform: translateX(10px) translateY(30px);
   cursor: pointer;
 }
 

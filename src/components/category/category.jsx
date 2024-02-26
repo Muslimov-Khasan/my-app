@@ -141,7 +141,7 @@ const Category = () => {
 
     fetchDataGetAll();
     closeModal();
-    closeDeleteModal()
+    closeDeleteModal();
   };
 
   const fetchDataGetAll = async () => {
@@ -302,246 +302,263 @@ const Category = () => {
 
   return (
     <>
-     {subCategories.length === 0 && (
-          <p className="loading-text">Yuklanmoqda...</p>
-        )}
-    <div className="container">
-      <div className="admin-wrapper">
-        <Nav />
+      {subCategories.length === 0 && (
+        <p className="loading-text">Yuklanmoqda...</p>
+      )}
+      <div className="container">
+        <div className="admin-wrapper">
+          <Nav />
 
-        <div className="subcategory">
-          <div className="key-word">
-          <Link
+          <div className="subcategory">
+            <div
+              className="button-container"
+              style={{
+                display: "flex",
+                border: "1px solid #d0d5dd",
+                borderRadius: "8px",
+              }}
+            >
+              <Link
                 className={`wrapper-link ${shouldAddClass ? "" : ""}`}
                 to="/add-category"
+                style={{ flex: 1, padding: "10px", textAlign: "center" }}
               >
                 Kategoriya
               </Link>
               <Link
                 className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
                 to="/category"
+                style={{
+                  flex: 1,
+                  padding: "10px",
+                  textAlign: "center",
+                  borderLeft: "1px solid #d0d5dd",
+                }}
               >
                 Bo'lim
               </Link>
-            <button className="categoriya-btn" onClick={openModal}>
-              ➕ Bo'lim Qo'shish
-            </button>
-          </div>
-          <table className="category-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Bo’lim nomi</th>
-                <th>Бўлим номи</th>
-                <th className="mn">Kategoriya nomi</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {subCategories.map((subCategory, index) => (
-                <tr key={index + 1}>
-                  <td>{index + 1}</td>
-                  <td>{subCategory.nameL}</td>
-                  <td>{subCategory.nameK}</td>
-                  <td>
-                    <span className="ienner">{subCategory.category.name}</span>
-                  </td>
-                  <td>
-                    <div className="toggle-wrapper">
-                      <label className="switch">
-                        <input
-                          type="checkbox"
-                          checked={subCategory.status === "ACTIVE"}
-                          onChange={() =>
-                            handleStatusChange(
-                              subCategory.id,
-                              subCategory.status === "ACTIVE"
-                                ? "NOT_ACTIVE"
-                                : "ACTIVE"
-                            )
-                          }
-                        />
-                        <span className="slider round"></span>
-                      </label>
-                    </div>
-                    {subCategory.status && (
-                      <p className="toggle-message">{subCategory.status}</p>
-                    )}
-                  </td>
+            </div>
 
-                  <td>
-                    <button
-                      className="categories-btn"
-                      onClick={() => threePointButton(index)}
-                    >
-                      &#x22EE;
-                    </button>
-                    {showActions && activeIndex === index && (
-                      <div className="addcategories-buttons">
-                        <button
-                          className="addcategories-delete"
-                          onClick={() => {
-                            openDeleteModal(subCategory);
-                            setShowActions(false); // Close the options after clicking delete
-                          }}
-                        >
-                          <img
-                            src={Trush_Icon}
-                            alt="Trush Icon"
-                            width={20}
-                            height={20}
-                          />
-                          o'chirish
-                        </button>
-
-                        <button
-                          className="addcategories-edit"
-                          onClick={() => {
-                            openEditModal(subCategory);
-                            setShowActions(false); // Close the options after editing
-                          }}
-                        >
-                          <img src={Edit} alt="Edit" width={25} height={25} />
-                          Tahrirlash
-                        </button>
-                      </div>
-                    )}
-                  </td>
+            <table className="category-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Bo’lim nomi</th>
+                  <th>Бўлим номи</th>
+                  <th className="mn">Kategoriya nomi</th>
+                  <th>Status</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+              </thead>
+              <tbody>
+                {subCategories.map((subCategory, index) => (
+                  <tr key={index + 1}>
+                    <td>{index + 1}</td>
+                    <td>{subCategory.nameL}</td>
+                    <td>{subCategory.nameK}</td>
+                    <td>
+                      <span className="ienner">
+                        {subCategory.category.name}
+                      </span>
+                    </td>
+                    <td>
+                      <div className="toggle-wrapper">
+                        <label className="switch">
+                          <input
+                            type="checkbox"
+                            checked={subCategory.status === "ACTIVE"}
+                            onChange={() =>
+                              handleStatusChange(
+                                subCategory.id,
+                                subCategory.status === "ACTIVE"
+                                  ? "NOT_ACTIVE"
+                                  : "ACTIVE"
+                              )
+                            }
+                          />
+                          <span className="slider round"></span>
+                        </label>
+                      </div>
+                      {subCategory.status && (
+                        <p className="toggle-message">{subCategory.status}</p>
+                      )}
+                    </td>
 
-      <Modal
-        isOpen={isModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={closeModal}
-      >
-        <div>
-          <form className="form-category" onSubmit={handleAddSubCategory}>
-            <button className="close-button" onClick={closeModal}>
-              &#10006;
-            </button>
-            <h3
-              style={{ color: "red", marginTop: "10px", textAlign: "center" }}
-            >
-              {error}
-            </h3>
-            <label htmlFor="Kategoriya">Kategoriya</label>
-            <select
-              className="select-category"
-              value={selectedCategoryId}
-              onChange={handleCategoryChange}
-            >
-              <option className="select" value="">
-                Tanlang
-              </option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-            <label htmlFor="Bo’lim nomi">Bo’lim nomi</label>
-            <input
-              className="sub-catgory"
-              type="text"
-              name="nameL"
-              id="nameL"
-              autoComplete="off"
-              value={categoriesData.nameL}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="Bo’lim nomi">Бўлим номи</label>
-            <input
-              className="sub-catgory"
-              type="text"
-              name="nameK"
-              id="nameK"
-              autoComplete="off"
-              value={categoriesData.nameK}
-              onChange={handleInputChange}
-            />
+                    <td>
+                      <button
+                        className="categories-btn"
+                        onClick={() => threePointButton(index)}
+                      >
+                        &#x22EE;
+                      </button>
+                      {showActions && activeIndex === index && (
+                        <div className="addcategories-buttons">
+                          <button
+                            className="addcategories-delete"
+                            onClick={() => {
+                              openDeleteModal(subCategory);
+                              setShowActions(false); // Close the options after clicking delete
+                            }}
+                          >
+                            <img
+                              src={Trush_Icon}
+                              alt="Trush Icon"
+                              width={20}
+                              height={20}
+                            />
+                            o'chirish
+                          </button>
 
-            <button className="category-save" type="submit">
-              Saqlash
-            </button>
-          </form>
-        </div>
-      </Modal>
-      <Modal
-        isOpen={isEditModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={closeEditModal}
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <button className="close-btn" onClick={closeEditModal}>
-              &#10006;
-            </button>
-            <h2 className="modal-title">Kategoriyani tahrirlash</h2>
+                          <button
+                            className="addcategories-edit"
+                            onClick={() => {
+                              openEditModal(subCategory);
+                              setShowActions(false); // Close the options after editing
+                            }}
+                          >
+                            <img src={Edit} alt="Edit" width={25} height={25} />
+                            Tahrirlash
+                          </button>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="modal-body">
-            <form onSubmit={handleEditFormSubmit}>
-              <label>
-                Kategoriya nomi
-                <input
-                  type="text"
-                  name="nameL"
-                  value={editCategoryData.nameL}
-                  onChange={handleEditInputChange}
-                  autoComplete="off"
-                />
-              </label>
-              <label>
-                Категория номи
-                <input
-                  type="text"
-                  name="nameK"
-                  autoComplete="off"
-                  value={editCategoryData.nameK}
-                  onChange={handleEditInputChange}
-                />
-              </label>
+        </div>
 
-              <button className="save-btn" type="submit">
+        <Modal
+          isOpen={isModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={closeModal}
+        >
+          <div>
+            <form className="form-category" onSubmit={handleAddSubCategory}>
+              <button className="close-button" onClick={closeModal}>
+                &#10006;
+              </button>
+              <h3
+                style={{ color: "red", marginTop: "10px", textAlign: "center" }}
+              >
+                {error}
+              </h3>
+              <label htmlFor="Kategoriya">Kategoriya</label>
+              <select
+                className="select-category"
+                value={selectedCategoryId}
+                onChange={handleCategoryChange}
+              >
+                <option className="select" value="">
+                  Tanlang
+                </option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="Bo’lim nomi">Bo’lim nomi</label>
+              <input
+                className="sub-catgory"
+                type="text"
+                name="nameL"
+                id="nameL"
+                autoComplete="off"
+                value={categoriesData.nameL}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="Bo’lim nomi">Бўлим номи</label>
+              <input
+                className="sub-catgory"
+                type="text"
+                name="nameK"
+                id="nameK"
+                autoComplete="off"
+                value={categoriesData.nameK}
+                onChange={handleInputChange}
+              />
+
+              <button className="category-save" type="submit">
                 Saqlash
               </button>
             </form>
           </div>
-        </div>
-      </Modal>
-      <Modal
-        isOpen={isDeleteModalOpen}
-        className="react-modal-content"
-        overlayClassName="react-modal-overlay"
-        onRequestClose={closeDeleteModal}
-      >
-        <div className="wrapper-category">
+        </Modal>
+        <Modal
+          isOpen={isEditModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={closeEditModal}
+        >
+          <div className="modal-content">
+            <div className="modal-header">
+              <button className="close-btn" onClick={closeEditModal}>
+                &#10006;
+              </button>
+              <h2 className="modal-title">Kategoriyani tahrirlash</h2>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={handleEditFormSubmit}>
+                <label>
+                  Kategoriya nomi
+                  <input
+                    type="text"
+                    name="nameL"
+                    value={editCategoryData.nameL}
+                    onChange={handleEditInputChange}
+                    autoComplete="off"
+                  />
+                </label>
+                <label>
+                  Категория номи
+                  <input
+                    type="text"
+                    name="nameK"
+                    autoComplete="off"
+                    value={editCategoryData.nameK}
+                    onChange={handleEditInputChange}
+                  />
+                </label>
+
+                <button className="save-btn" type="submit">
+                  Saqlash
+                </button>
+              </form>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={isDeleteModalOpen}
+          className="react-modal-content"
+          overlayClassName="react-modal-overlay"
+          onRequestClose={closeDeleteModal}
+        >
+          <div className="wrapper-category">
             <button className="news-close-btn" onClick={closeDeleteModal}>
               &#10006;
             </button>
-          <h2 className="category-info">
-            Haqiqatan ham oʻchirib tashlamoqchimisiz{" "}
-            {selectedItem && selectedItem.nameL}?
-          </h2>
-          <button
-            className="category-delete-modal"
-            onClick={() => handleDeleteClick(selectedItem.id)}
-          >
-            Xa
-          </button>
-          <button className="category-cancel-modal" onClick={closeDeleteModal}>
-            Yo'q
-          </button>
-        </div>
-      </Modal>
-    </div>
+            <h2 className="category-info">
+              Haqiqatan ham oʻchirib tashlamoqchimisiz{" "}
+              {selectedItem && selectedItem.nameL}?
+            </h2>
+            <button
+              className="category-delete-modal"
+              onClick={() => handleDeleteClick(selectedItem.id)}
+            >
+              Xa
+            </button>
+            <button
+              className="category-cancel-modal"
+              onClick={closeDeleteModal}
+            >
+              Yo'q
+            </button>
+          </div>
+        </Modal>
+      </div>
     </>
   );
 };

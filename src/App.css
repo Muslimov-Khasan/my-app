@@ -103,9 +103,9 @@ body {
 
 .newClass {
   text-decoration: none;
-  background-color: #fff; /* White background color */
-  border-radius: 8px; /* Border radius */
-  padding: 8px 33px; /* Adjust padding as needed */
+  background-color: #F9FAFBFF;
+  border-radius: 7px;
+  padding: 8px 33px; 
 }
 
 .po {
