@@ -341,6 +341,8 @@ const Category = () => {
 
             <table className="category-table">
               <thead>
+              <h2 className="admin-title">Bo’limlar ro’yxati</h2>
+
                 <tr>
                   <th>ID</th>
                   <th>Bo’lim nomi</th>

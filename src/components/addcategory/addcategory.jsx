@@ -399,6 +399,8 @@ const AddCategory = () => {
           </div>
           <table className="add-catgory-table">
             <thead>
+            <h2 className="admin-title">Kategoriyalar ro’yxati</h2>
+
               <tr>
                 <th>ID</th>
                 <th>Rasm</th>
