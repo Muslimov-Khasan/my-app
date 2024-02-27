@@ -43,8 +43,11 @@
 }
 
 .productcheked-img {
+  width: 290px;
+  height: 240px;
   object-fit: cover;
   border-radius: 5px;
+  transform: translateX(-16px);
 }
 .modal-img-container {
   display: flex;
