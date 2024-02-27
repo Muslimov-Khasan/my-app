@@ -71,16 +71,36 @@ const ModeratorCheked = () => {
       <div className="contianer">
         <h2 className="moderator-title">Tasdiqlangan</h2>
         <div className="button-row">
-          <div className="po">
+          <div
+            className="po"
+            style={{
+              display: "flex",
+              border: "1px solid #d0d5dd",
+              borderRadius: "8px",
+              minWidth: "300px", // Adjust the minimum width as needed
+            }}
+          >
             <Link
               className={`wrapper-link ${shouldAddClass ? "" : ""}`}
               to="/Moderator"
+              style={{
+                flex: 1,
+                padding: "10px",
+                textAlign: "center",
+                whiteSpace: "nowrap", // Add white-space property
+              }}
             >
               Yangi qo’shilgan
             </Link>
             <Link
               className={`wrapper-link ${shouldAddClass ? "newClass" : ""}`}
               to="/ModeratorCheked"
+              style={{
+                flex: 1,
+                padding: "10px",
+                textAlign: "center",
+                borderLeft: "1px solid #d0d5dd",
+              }}
             >
               Tasdiqlangan
             </Link>

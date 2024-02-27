@@ -24,7 +24,7 @@ ChartJS.register(
 );
 
 function Monitoring() {
-  const [selectedOption, setSelectedOption] = useState("DAILY");
+  const [selectedOption, setSelectedOption] = useState("MONTHLY");
   const [ChooseDate, setChooseDate] = useState(
     new Date().toISOString().split("T")[0]
   );
