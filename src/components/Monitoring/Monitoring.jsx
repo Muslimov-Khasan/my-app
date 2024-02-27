@@ -48,7 +48,7 @@ function Monitoring() {
   const fetchData = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
-  
+
       const response = await fetch(
         "https://avtowatt.uz/api/v1/products/statistics",
         {
@@ -63,18 +63,17 @@ function Monitoring() {
           }),
         }
       );
-  
+
       const responseData = await response.json();
       const tempxData = responseData.map((item) => item.dateInterval);
       const tempyData = responseData.map((item) => item.productCount);
-  
+
       setxData([...tempxData]);
       setyData([...tempyData]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  
 
   const chartConfig = {
     type: "bar", // Change the chart type to "bar" for a column chart
@@ -145,44 +144,42 @@ function Monitoring() {
     <>
       <div className="container">
         <div className="admin-wrapper">
+          <Nav />
 
-        <Nav />
-
-        <div className="drmamma-wrapper">
-          {/* <div className="text-wrapper">
+          <div className="drmamma-wrapper">
+            {/* <div className="text-wrapper">
             <h2 className="drmamma-title">Monitoring</h2>
             <p className="drmamma-title">E’lonlar</p>
           </div> */}
-          <select
-            className="day-select"
-            onChange={handleSelectChange}
-            value={selectedOption}
-          >
-            <option className="option" value="DAILY">
-              Kunlik
-            </option>
-            <option className="option" value="MONTHLY">
-              Oylik
-            </option>
-            <option className="option" value="YEARLY">
-              Yilik
-            </option>
-          </select>
-          <input
-            className="date-input"
-            type="date"
-            onChange={(event) => setChooseDate(event.target.value)}
-            value={ChooseDate}
-          />
-        </div>
-      <div className="card">
-
-        <Card>
-          <CardBody className="w-full px-2 pb-0">
-            <Chart {...chartConfig} />
-          </CardBody>
-        </Card>
-      </div>
+            <select
+              className="day-select"
+              onChange={handleSelectChange}
+              value={selectedOption}
+            >
+              <option className="option" value="DAILY">
+                Kunlik
+              </option>
+              <option className="option" value="MONTHLY">
+                Oylik
+              </option>
+              <option className="option" value="YEARLY">
+                Yilik
+              </option>
+            </select>
+            <input
+              className="date-input"
+              type="date"
+              onChange={(event) => setChooseDate(event.target.value)}
+              value={ChooseDate}
+            />
+          </div>
+          <div className="card">
+            <Card>
+              <CardBody className="w-full px-2 pb-0">
+                <Chart {...chartConfig} />
+              </CardBody>
+            </Card>
+          </div>
         </div>
       </div>
     </>

@@ -210,6 +210,17 @@ tbody tr:hover {
   text-align: center;
   transform: translateY(-50px) translateX(-10px);
 }
+
+@media only screen and (min-width: 1000px) and (max-width: 1025px) {
+  .admin-btn {
+    transform: translateX(390px); /* Adjusted for smaller screen */
+  }
+
+  .editd-btn {
+    transform: translateX(406px); /* Adjusted for smaller screen */
+  }
+}
+
 @media only screen and (max-width: 768px) and (max-width: 1024px) {
   .box {
     width: 100%; /* Adjust width for better responsiveness */

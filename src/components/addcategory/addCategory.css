@@ -217,9 +217,10 @@ input:checked + .slider + .toggle-message {
   width: 100%;
   border-collapse: collapse;
   cursor: pointer;
-  margin-top: 80px;
-  margin-left: -200px;
+  margin: 0 auto;
+  transform: translateX(-160px) translateY(100px); /* Center horizontally */
 }
+
 
 
 th, td {
@@ -243,7 +244,6 @@ tbody tr:nth-child(odd) {
 tbody tr:hover {
   background-color: #f5f5f5;
 }
-
 
 .delete-title {
   transform: translateY(-65px);
@@ -272,3 +272,47 @@ tbody tr:hover {
   margin: 0 auto;
   transform: translateX(60px);
 }
+@media only screen and (max-width: 1025px) {
+  /* Your responsive CSS code here */
+  .addcategoriya-btn {
+    transform: translateX(900px);
+  }
+  .modal-body form label,
+  .modal-body-editd form label {
+    width: 250px;
+  }
+
+  .modal-body form input[type="text"],
+  .modal-body-editd form input[type="text"] {
+    width: 250px;
+  }
+
+  .save-btn {
+    width: 180px;
+  }
+
+  .edit-img {
+    transform: translateX(150px);
+  }
+  .addcategories-buttons {
+    width: 400px; /* Adjust width for desktop */
+    transform: translateX(-50%); /* Center horizontally */
+    left: 50%; /* Center horizontally */
+  }
+  .add-btn,
+  .category-close-btn,
+  .btn-file-edit,
+  .delete-modal-buttons,
+  .delete-close-btn {
+    transform: translateX(300px);
+  }
+
+  .add-catgory-table {
+    margin-left: -150px;
+  }
+
+  .delete-close-btn {
+    transform: translateX(300px) translateY(-30px);
+  }
+}
+

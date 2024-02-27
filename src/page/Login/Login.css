@@ -97,7 +97,11 @@
 }  
 
 .image {
-  width: 720px;
-  height: 900px;
-  transform: translateY(-200px) rotate(90deg);
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: top right; /* Set the transform origin to the top right corner */
+  transform: translateY(704px) rotate(90deg);
 }
